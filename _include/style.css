@@ -1,0 +1,689 @@
+/* KLEUREN PALETTE /////////////////////////////
+// hologram interface blauw ///////////////////
+
+	=basis=
+	default holoblauw	- #6FC0BA - rgb(111,192,186)
+	aquilablauw(shadow)	- #005B8E - rgba(0,91,142)
+	zwart bg		- #000
+	gallentekleur		- rgb(38, 233, 202)
+	contrast-oranje		- #FF9933 - rgb(255,153,51)
+
+	=tekst=
+	text wit	- #FFF
+	gubat geel	- #FFCC00
+	ultra cyan	- #00EEEE
+
+	==status==
+	online:groen 	- rgb(0,128,0)
+	blok:groen 	- rgb(166, 216, 83)
+	offline:grijs 	- #737373 - hsla(0, 0%, 100%, 0.45)
+        crit:rood       - #990000
+
+	font opzoeken: incolsolata? + sans-serif als backup font.
+
+////////////////////////////
+/////nick groen/////////////
+[14:36, 19-5-2016] Nick: border 7b921f
+[14:36, 19-5-2016] Nick: shadow 259029
+
+
+/* //// AMBER ALERT /// */
+/*
+
+#F0C60C     - default?
+#E2DE84     - vaag
+#D1B800     - donkerder
+#EFCA08     - donker
+#FFCC00     - gubat geel
+
+#EDDA09     - erg geel
+///////////////
+#808808 - olijfgroen COINCIDENCE I FINK NT
+#808 // #880088 - royaal dugo paars
+
+/////
+////
+///
+*/
+
+html {
+    background  : url("/_images/citadel_92.jpg");
+    margin      : 0px;
+    width       : 100%;
+    height      : 100%;
+}
+body {
+    font-size       : 16px;
+    font-size       : 1rem;
+/*    font-family   : 'Inconsolata', sans-serif ;*/
+    font-family     : 'Inconsolata', consolas, sans-serif;
+    color           : #FFF;
+
+}
+p {
+    margin-left: 5px;
+}
+h1, h2, h3, h4 {
+    font-family: sans-serif;
+}
+a, a:active {
+    color : #00EEEE;
+}
+a:hover     {color:#F2F2F2;}
+
+    .Ye     {color:#FFCC00;}
+    .Cy     {color:#00EEEE;}
+    .Or     {color:#FF9933;}
+    .Gy     {color:#737373;}
+    .Rd     {color:#990000;}
+    .Alt    {color:#00EEEE;}
+
+    .center {text-align:center;}
+
+    .Gy, .blinktext {
+        -webkit-animation   : GrayHX  1.6s linear infinite;
+        -moz-animation      : GrayHX  1.6s linear infinite;
+        -animation          : GrayHX  1.6s linear infinite;
+    }
+
+    .CODECYAN, .SPACESHIPS, .fnc {
+      cursor : pointer;
+    }
+
+    .fnc:hover, .refresh:hover {
+        color               : #FFF;
+        background          : #005B8E;
+        border-radius       : 3px;
+        padding             : 2px;
+        -webkit-animation   : FadeInLoad  0.2s linear;
+        -moz-animation      : FadeInLoad  0.2s linear;
+        -animation          : FadeInLoad  0.2s linear;
+        cursor              : pointer;
+    }
+    .online, .offline, .hosting, .critical, .offworld, .unknown {
+        border-radius   : 3px;
+        padding         : 3px;
+        text-shadow     : 1px #000;
+        color           : #FFF;
+    }
+    .online     {background: rgba(166, 216, 83, 0.7);}
+    .offline    {background: #737373;}
+    .hosting    {background: #005B8E;}
+    .critical   {background: #990000;}
+    .unknown    {background: #FF9933;}
+    .offworld   {background: #880088;}
+
+    .refresh {
+      padding     : 2px;
+      max-width   : 92px;
+      text-align  : center;
+      margin      : 0;
+    }
+
+    .noselect {
+        -webkit-user-select: none;   /* Chrome/Safari/Opera */
+        -moz-user-select: none;      /* Firefox */
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+#screen {
+    position    : absolute; /*fixed*/
+    top         : 100px; /*357px*/
+    left        : 50px; /*50vw*/
+}
+
+#container_inside {
+    position    : relative; /*fixed*/
+    /*top         : 107px;*/
+    top         : 6px;
+    left        : 1vw;
+    min-height  : 800px;
+    min-height  : 50rem;
+    width       : 77vw;
+    min-width   : 1000px;
+    display     : flex;
+    z-index     : 1;
+    padding             : 0 1vw 0 1vw;
+    -webkit-animation   : FadeInLoad  0.9s linear;
+    -moz-animation      : FadeInLoad  0.9s linear;
+    -animation          : FadeInLoad  0.9s linear;
+}
+#container_outside {
+    position    : relative; /*fixed*/
+    /*top         : 101px;*/
+    left        : 6vw;
+    width       : 81vw;
+    min-width   : 1052px;
+    min-height  : 816px;
+    min-height  : 51rem;
+    background  : #000;
+    z-index     : 0;
+    /*background  : #030303;*/
+        -webkit-animation   : BorderDash  0.3s linear;
+        -moz-animation      : BorderDash  0.3s linear;
+        -animation          : BorderDash  0.3s linear;
+}
+@media (max-width: 1204px) {
+    #screen {
+        left: 0px;
+    }
+    #container_inside {
+        left: 8px;
+        right: 8px;
+    }
+    #container_outside {
+        left: 0px;
+        right: 0px;
+    }
+
+}
+
+
+.container-border {
+    border          : 2px solid #FFCC00;
+    border-radius   : 5px;
+    box-shadow      : 0 0 2px #F0C60C, inset 0 0 2px #F0C60C;
+    background      : #000;
+    /*background    : #030303;*/
+}
+
+#row1, #row2, #row3, #row_adm {
+    display         : flex;
+    flex-direction  : column;
+    margin-left     : auto;
+    margin-right    : auto;
+    margin-top      : 8px;
+    margin-top      : 0.5rem;
+    margin-bottom   : 8px;
+    margin-bottom   : 0.5rem;
+    visibility      : hidden;
+        -webkit-animation   : Blox  0.4s linear forwards;
+        -moz-animation      : Blox  0.4s linear forwards;
+        -animation          : Blox  0.4s linear forwards;
+}
+
+#left {
+    width       : 32%;
+    min-width   : 260px;
+    position    : relative;
+}
+
+#right {
+    width       : 68%;
+    min-width   : 640px;
+    margin-left : 16px;
+    margin-left : 1rem;
+    position    : relative;
+}
+
+#row1 { animation-delay: 0.6s; -moz-animation-delay: 0.6s; -webkit-animation-delay: 0.6s; min-height: 29rem;}
+#row2 { animation-delay: 1.4s; -moz-animation-delay: 1.4s; -webkit-animation-delay: 1.4s; }
+#row3 { animation-delay: 1.1s; -moz-animation-delay: 1.1s; -webkit-animation-delay: 1.1s;}
+
+#loading {
+    position    : absolute;
+    right       : 30%;
+    z-index     : 3;
+    top         : 120px;
+    visibility  : hidden;
+
+    -webkit-animation   : Loading 1.3s linear forwards;
+    -moz-animation      : Loading 1.3s linear forwards;
+    -animation          : Loading 1.3s linear forwards;
+    animation-delay         : 0.4s;
+    -moz-animation-delay    : 0.4s;
+    -webkit-animation-delay : 0.4s;
+}
+@media (max-width: 1504px) {
+    #loading {left : 15%;}
+}
+@media (max-width: 1204px) {
+    #loading {left : 5%;}
+}
+
+
+/* KLOKKERDE KLOKKERDE KLOK */
+  #clockbar:before, #clockbar::before {
+    display     : block;
+    top         : 35px;
+    position    : absolute;
+    width       : 100%;
+    height      : 3px;
+    background  : #FF9933;
+  }
+    #clockbar {
+      margin-bottom : 10px;
+      padding       : 3px;
+      border-top    : 3px solid #FF9933;
+      border-bottom : 1px solid #FF9933;
+      white-space   : nowrap;
+      overflow      : hidden;
+      font-size     : 8pt;
+    }
+      #clockContainer {
+
+      }
+      #clockContainer #clock {
+        float       : left;
+        color       : #AAA;
+        overflow    : hidden;
+        margin-top  : 8px;
+        font-size   : 64px;
+        font-size   : 4rem;
+      }
+
+
+#grid {
+    width           : 95%;
+    margin          : 8px 0px 0px 16px;
+    height          : auto;
+    display         : flex;
+    -webkit-flex-direction  : row;
+    flex-direction          : row;
+    -webkit-flex-wrap       : wrap;
+    flex-wrap               : wrap;
+    -webkit-flex-flow       : row wrap;
+     flex-flow              : row wrap;
+}
+    #grid .item { /* Declare animatie */
+        -webkit-animation   : Blox  0.4s linear forwards;
+        -moz-animation      : Blox  0.4s linear forwards;
+        -animation          : Blox  0.4s linear forwards;
+        visibility          : hidden;
+    }
+
+    /*declare volgorde 1t/m 4*/
+    #grid .s1 {animation-delay: 2.0s; -moz-animation-delay: 2.0s; -webkit-animation-delay: 2.0s;}
+    #grid .s2 {animation-delay: 2.2s; -moz-animation-delay: 2.2s; -webkit-animation-delay: 2.2s;}
+    #grid .s3 {animation-delay: 2.4s; -moz-animation-delay: 2.4s; -webkit-animation-delay: 2.4s;}
+    #grid .s4 {animation-delay: 2.6s; -moz-animation-delay: 2.6s; -webkit-animation-delay: 2.6s;}
+
+    #grid h3, #grid p {
+        margin-left: 8px;
+    }
+    #grid h3 {
+        text-transform: uppercase;
+        margin-right: 8px;
+        border-bottom: 1px solid #222;
+    }
+    #grid tr {
+        margin-left: 8px;
+    }
+
+        #grid .quad { /* 1/4de */
+            margin  : 4px;
+            flex    : 1 0 0;
+        }
+        #grid .triplet { /* 1/3de */
+            margin  : 4px;
+            flex    : 2 0 0;
+        }
+        #grid .twin { /* OF de helft x2, of 3/4de + 1/4de */
+            margin  : 4px;
+            flex    : 3 0 0;
+        }
+        #grid .full { /* volledig blok */
+            margin  : 4px;
+            flex    : 4 0 0;
+        }
+            .imgfolder {
+                background-repeat:no-repeat;
+                height      : 206px;
+                width       : 246px;
+                /*background  : url("/_images/folder_default.png");*/
+                background  : url("/_images/folder_default_Y.png");
+            }
+            .imgfolder p {
+                position    : relative;
+                top         : 210px;
+            }
+            .imgfolder p span {
+              padding     : 3px;
+            }
+            .imgfolder:hover {
+                color       : #FFCC00;
+                cursor      : pointer;
+                /*background  : url("/_images/folder_selected.png");*/
+                background  : url("/_images/folder_selected_Y.png");
+                    -webkit-animation   : FadeInLoad  0.1s linear;
+                    -moz-animation      : FadeInLoad  0.1s linear;
+                    -animation          : FadeInLoad  0.1s linear;
+            }
+            .imgfolder p span:hover, .imgfolder span:hover {
+              background-color : #333;
+              border-radius    : 3px;
+            }
+
+            .imgfolder:active{
+                position    : relative;
+                top         : 1px;
+            }
+
+            .smallfolder, .smallfolder:hover {
+                background-repeat:no-repeat;
+                background-size : 200px 160px;
+                width           : 216px;
+                height          : 176px;
+                margin          : 8px;
+            }
+
+    .statustable {
+        font-size   : 100%;
+        margin      : 2px;
+    }
+    #grid .item table {
+        padding-bottom: 16px;
+    }
+
+
+.boxleft {
+    min-height      : 42px;
+    margin-bottom   : 8px;
+    width           : 100%;
+}
+
+.b1,.b2 {
+    -webkit-animation   : Blox  0.6s linear forwards;
+    -moz-animation      : Blox  0.6s linear forwards;
+    -animation          : Blox  0.6s linear forwards;
+    visibility:hidden;
+}
+
+    .b1 {animation-delay: 1s; -moz-animation-delay: 1s; -webkit-animation-delay: 1s;}
+    .b2 {animation-delay: 1.2s; -moz-animation-delay: 1.2s; -webkit-animation-delay: 1.2s;}
+
+    .static-icon {
+      position  : absolute;
+      font-size : 24px;
+      font-size : 1.5rem;
+    }
+
+    .motto {
+        float       : left;
+        font-weight : 600;
+        overflow    : hidden;
+        height      : 35px;
+        font-family : sans-serif;
+    }
+    .motto ul {
+        margin-left         : -12px;
+        list-style          : none;
+        animation           : slidemotto 11s linear 0s normal infinite;
+        -moz-animation      : slidemotto 11s linear 0s normal infinite;
+        -webkit-animation   : slidemotto 11s linear 0s normal infinite;
+            animation-delay         : 1s;
+            -moz-animation-delay    : 1s;
+            -webkit-animation-delay : 1s;
+    }
+    .motto ul li {
+        line-height : 40px;
+        margin-left : 0px;
+    }
+
+    .bottom_bar {
+        border-bottom: 1px solid #FFCC00;
+    }
+
+.bar {
+   border-bottom: 1px solid #737373;
+   border-top   : 1px solid #737373;
+   font-size    : 75%;
+   flex-direction: row;
+   margin-bottom: 4px;
+   margin-top   : 2px;
+}
+    .bar_left {
+        text-align: left;
+        width: 40%;
+        float: left;
+    }
+    .bar_right {
+        text-align: right;
+        width: 40%;
+        float: right;
+    }
+
+.half4 {
+    width       : 100%;
+    height      : 50%;
+    position    : relative;
+    top         : 128px;
+    top         : 8rem;
+}
+
+#statusBars {
+    margin-left: 16px;
+}
+#statusBars td{
+    width       : 75px;
+    text-align  : left;
+}
+
+/* CORP BULLETIN */
+.bulletinTitle {
+  font-size : 175%;
+  margin    : 32px 0 4px 0;
+}
+.bulletinTitle h2 {
+    padding : 3px;
+}
+  .bulletin .page1 {
+    display: inline;
+  }
+  .bulletin .page2 {
+    display: none;
+  }
+    .buItem {
+      border-radius : 0 16px 0 0;
+      padding       : 3px;
+      border-bottom : 1px solid #002222;
+    }
+    .buItem:hover {
+      background  : #0f0f0f;
+      cursor      : default;
+    }
+      .bulletinPage {
+        max-width     : 75px;
+        text-align    : center;
+        border-radius : 4px;
+      }
+      .bulletinPage:hover {
+        background  : #0f0f0f;
+        cursor      : pointer;
+      }
+
+  /* **************** SCOREBOARD ************************ */
+    #scoreboard #grid .fncSB p {
+      background-color  : rgba(255, 204, 0, 0.15);
+      border            : 1px solid #FFCC00;
+      border-radius     : 1rem 2px 2px 0;
+      padding           : 12px;
+      margin            : 0;
+      cursor            : pointer;
+    }
+    #scoreboard #grid .fncSB p:hover {
+      box-shadow          : inset 0 0 0 2px #aaa;
+    }
+
+    #scoreboard #grid .full {
+      background-color  : #0f0f0f;
+    }
+      #scoreboard .statsOverview {
+        white-space: nowrap;
+      }
+
+    .score_totals td{
+      font-size : 90%;
+      text-transform: capitalize;
+    }
+      .score_totals th{
+        text-align: left;
+      }
+        .score_totals td, .score_totals th {
+          padding    : 4px 12px;
+          padding    : 0.25rem 0.75rem;
+        }
+
+  /* **************** SCOREBOARD ************************ */
+
+/* SWITCH BUTTON */
+.CODECYAN {
+    height      : 60px;
+    width       : 140px;
+    position    : absolute;
+    z-index     : 2;
+    top         : 40px;
+    left        : 80%;
+    background  : url("/_images/toggleY.png");
+        -webkit-animation   : BorderDash  0.5s linear;
+        -moz-animation      : BorderDash  0.5s linear;
+        -animation          : BorderDash  0.5s linear;
+}
+.CODECYAN:active {
+    top         : 41px;
+}
+
+.SPACESHIPS {
+  height      : 28px;
+  width       : 44px;
+  position    : absolute;
+  margin      : 1px;
+  right       : 3px;
+  top         : 16px;
+  z-index     : 2;
+  background  : url("/_images/toggle_sY.png");
+}
+.SPACESHIPS:active {
+  top         : 17px;
+}
+.SPACESHIPS:hover, .SPACESHIPS:active {
+  background-color  : #0f0f0f;
+  border            : 1px solid #1f1f1f;
+}
+
+/*  KEYPAD LOGIN. LET OP:: PAGINA IS MOBILE _FIRST_ GEDESIGNED EN DUS GALACTUS HUGE.  */
+
+#row_adm {
+    display: flex;
+    flex-direction: column;
+}
+
+/*BACKEND*/
+#container_adm {
+  background-color      : #000;
+  background-image      : url("/_images/cap_sub.jpg");
+    margin              : 0px;
+    max-width           : 478px;
+    min-height          : 318px;
+    -webkit-animation   : BorderDash  0.3s linear;
+    -moz-animation      : BorderDash  0.3s linear;
+    -animation          : BorderDash  0.3s linear;
+    padding             : 4px;
+}
+
+#container_adm a  {color: #FFF; text-decoration: none;}
+
+.adm_box {
+  border-radius : 8px 0 0 0;
+  margin        : 1rem 0;
+}
+.adm_box:hover {
+  background-color: #0f0f0f;
+}
+
+#container_adm input[type="submit"], #container_adm input[type="text"], #container_adm select{
+    padding         : 8px 4px 8px 4px;
+    font-size       : 120%;
+    border-radius   : 6px 0px 0px 0px;
+    margin          : 8px 0;
+}
+#container_adm input[type="text"]   {max-width: 154px;}
+#container_adm select               {max-width: 104px;}
+#container_adm .adm_status table    {border-bottom: 2px solid #FF9933;padding: 4px 0;}
+#container_adm .adm_status th       {background-color:#0f0f0f;}
+#container_adm .adm_status input[type="submit"] {min-width: 120px;}
+
+#writekeys {
+    background      : #CCC;
+    color           : #222;
+    /*
+    padding         : 4px;
+    font-size       : 32px;
+    font-size       : 2rem;
+    */
+    font-size       : 32px;
+    font-size       : 2rem;
+    padding         : 4px;
+    max-width       : 100%;
+    border-radius   : 5px;
+}
+    #admkeypad table {
+        margin-left : auto;
+        margin-right: auto;
+        float       : right;
+    }
+    #admkeypad th {
+        width: 100%;
+    }
+    #admkeypad td {
+        /*
+        width       : 30%;
+        font-size   : 32px;
+        font-size   : 2rem;
+        padding     : 16px;
+        padding     : 1rem;
+        */
+        width       : 30%;
+        font-size   : 32px;
+        font-size   : 2rem;
+        padding     : 5vw 9vw 5vw 9vw;
+        max-width   : 148px;
+        text-align  : center;
+        cursor      : pointer;
+    }
+        #admkeypad td:hover {
+            border          : 2px solid rgb(166, 216, 83);
+            border-radius   : 5px;
+            box-shadow      : 0 0 2px rgb(166, 216, 83), inset 0 0 2px rgb(166, 216, 83);
+        }
+        #admkeypad td:active {
+            background      : #737373;
+        }
+        .adm-border {
+            border : 2px solid #FFCC00;
+        }
+
+@media (min-width: 600px) {
+    #writekeys {
+        font-size   : 64px;
+        font-size   : 4rem;
+        padding     : 8px 0px 8px 0px;
+    }
+    #admkeypad td {
+        width       : 30%;
+        font-size   : 32px;
+        font-size   : 2rem;
+        padding     : 32px;
+        padding     : 2rem;
+    }
+}
+
+
+/* GATE LOOP VIDEO VAN ZKILL */
+video#bgvid {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    /*background: url(polina.jpg) no-repeat;*/
+    background-size: cover;
+}

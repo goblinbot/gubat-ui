@@ -1,0 +1,41 @@
+/* KLEUREN PALETTE /////////////////////////////
+// hologram interface blauw ///////////////////
+
+	=basis=
+	default holoblauw	- #6FC0BA - rgb(111,192,186)
+	aquilablauw(shadow)	- #005B8E - rgba(0,91,142)
+	zwart bg		- #000
+	gallentekleur		- rgb(38, 233, 202)
+	contrast-oranje		- #FF9933 - rgb(255,153,51)
+
+	=tekst=
+	text wit	- #FFF
+	gubat geel	- #FFCC00
+	ultra cyan	- #00EEEE
+
+	==status==
+	online:groen 	- rgb(0,128,0)
+	blok:groen 	- rgb(166, 216, 83)
+	offline:grijs 	- #737373 - hsla(0, 0%, 100%, 0.45)
+        crit:rood       - #990000
+
+	font opzoeken: incolsolata? + sans-serif als backup font.
+
+//////////////////////////////////*/
+
+#orbit h1::before {
+    border      : 4px solid #6FC0BA;
+}
+
+.container-border {
+    border          : 2px solid #6fc0ba;
+    box-shadow      : 0 0 2px #005b8e, inset 0 0 2px #005b8e;
+}
+
+.imgfolder {
+    background  : url("/_images/folder_default.png");
+}
+.imgfolder:hover {
+    cursor      : pointer;
+    background  : url("/_images/folder_selected.png");
+}

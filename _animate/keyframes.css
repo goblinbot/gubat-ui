@@ -1,0 +1,207 @@
+/* START */
+/* /////////////////// LOAD DE CONTAINERS /////////////////// */
+@-webkit-keyframes FadeInLoad  {
+    0% { opacity: 0; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+@-moz-keyframes FadeInLoad {
+    0% { opacity: 0; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+@keyframes FadeInLoad {
+    0% { opacity: 0; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+/*einde*/
+/* /// BORDER INVUL? /// */
+@-webkit-keyframes BorderDash  {
+    0%      { -webkit-transform: scale(0); opacity: 0;}
+    50%     { -webkit-transform: scale(0.5); opacity: 0.1;}
+    100%    { -webkit-transform: scale(1); opacity: 1;}
+}
+@-moz-keyframes BorderDash {
+    0%      { -moz-transform: scale(0); opacity: 0;}
+    50%     { -moz-transform: scale(0.5); opacity: 0.1;}
+    100%    { -moz-transform: scale(1); opacity: 1;}
+}
+@keyframes BorderDash {
+    0%      { transform: scale(0); opacity: 0;}
+    50%     { transform: scale(0.5); opacity: 0.1;}
+    100%    { transform: scale(1); opacity: 1;}
+}
+/*einde*/
+/* ////// BLOKKEN ////// */
+@-webkit-keyframes Blox  {
+    0%      { -webkit-transform: scale(0); opacity: 0; visibility: hidden;}
+    50%     { -webkit-transform: scale(0.5); opacity: 0.1; visibility: hidden;}
+    100%    { -webkit-transform: scale(1); opacity: 1; visibility: visible;}
+}
+@-moz-keyframes Blox {
+    0%      { -moz-transform: scale(0); opacity: 0; visibility: hidden;}
+    50%     { -moz-transform: scale(0.5); opacity: 0.1; visibility: hidden;}
+    100%    { -moz-transform: scale(1); opacity: 1; visibility: visible;}
+}
+@keyframes Blox {
+    0%      { transform: scale(0); opacity: 0; visibility: hidden;}
+    50%     { transform: scale(0.5); opacity: 0.1; visibility: hidden;}
+    100%    { transform: scale(1); opacity: 1; visibility: visible;}
+}
+/*einde*/
+
+/* /// LOADING /// */
+@-webkit-keyframes Loading  {
+    0%      { opacity: 0;   visibility: hidden;}
+    1%      { opacity: 0;   visibility: visible;}
+    50%     { opacity: 0.5; visibility: visible;}
+    80%     { opacity: 0.1; visibility: visible;}
+    99%     { opacity: 0.8; visibility: visible;}
+    100%    { opacity: 0;   visibility: hidden;}
+}
+@-moz-keyframes Loading {
+    0%      { opacity: 0;   visibility: hidden;}
+    1%      { opacity: 0;   visibility: visible;}
+    50%     { opacity: 0.5; visibility: visible;}
+    80%     { opacity: 0.1; visibility: visible;}
+    99%     { opacity: 0.8; visibility: visible;}
+    100%    { opacity: 0;   visibility: hidden;}
+}
+@keyframes Loading {
+    0%      { opacity: 0;   visibility: hidden;}
+    1%      { opacity: 0;   visibility: visible;}
+    50%     { opacity: 0.5; visibility: visible;}
+    80%     { opacity: 0.1; visibility: visible;}
+    99%     { opacity: 0.6; visibility: visible;}
+    100%    { opacity: 0.1;   visibility: hidden;}
+}
+
+
+/* ////////////// EINDE ANIMATES LOAD //////// */
+
+/* ////////////// OUT_ PULSE //////////////// */
+@-webkit-keyframes pulseout {
+    0%      { -webkit-transform: scale(1); opacity: 0;}
+    8%      { -webkit-transform: scale(1.02); opacity: 0.2;}
+    15%     { -webkit-transform: scale(1.04); opacity: 0.3;}
+    30%     { -webkit-transform: scale(1.07); opacity: 0.3;}
+    100%    { opacity: 0.2; -webkit-transform: scale(1.1); }
+}
+@-moz-keyframes pulseout {
+    0%      { -moz-transform: scale(1); opacity: 0;}
+    8%      { -moz-transform: scale(1.02); opacity: 0.2;}
+    15%     { -moz-transform: scale(1.04); opacity: 0.3;}
+    30%     { -moz-transform: scale(1.07); opacity: 0.3;}
+    100%    { opacity: 0.2; -moz-transform: scale(1.1);}
+}
+@keyframes pulseout{
+    0%      { transform: scale(1); opacity: 0;}
+    8%      { transform: scale(1.02); opacity: 0.2;}
+    15%     { transform: scale(1.04); opacity: 0.3;}
+    30%     { transform: scale(1.07); opacity: 0.3;}
+    100%    { opacity: 0.2; transform: scale(1.1);}
+}
+/* ////////// EINDE OUT_PULSE ////////// */
+/* ///////// HOVER ///////////////////// */
+@keyframes item_hover{
+  0%    { transform: scale(1);}
+  50%   { transform: scale(1.05);}
+  100%  { transform: scale(1);}
+}
+@-moz-keyframes item_hover{
+  0%    { transform: scale(1);}
+  50%   { transform: scale(1.05);}
+  100%  { transform: scale(1);}
+}
+@-webkit-keyframes item_hover{
+  0%    { transform: scale(1);}
+  50%   { transform: scale(1.05);}
+  100%  { transform: scale(1);}
+}
+
+/* ///// GLITCH ///// */
+svg{
+  width: 600px;
+  height: 120px;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  background: black;
+}
+
+/* //// motto ///////// */
+@-webkit-keyframes slidemotto {
+    0%      {margin-top:0;}
+    8%      {margin-top:0;}
+    17%     {margin-top:-40px;}
+    25%     {margin-top:-40px;}
+    33%     {margin-top:-80px;}
+    37%     {margin-top:-80px;}
+    42%     {margin-top:-120px;}
+    50%     {margin-top:-120px;}
+    59%     {margin-top:-80px;}
+    68%     {margin-top:-80px;}
+    76%     {margin-top:-40px;}
+    85%     {margin-top:-40px;}
+    93%     {margin-top:0;}
+    100%    {margin-top:0;}
+}
+@-moz-keyframes slidemotto {
+    0%      {margin-top:0;}
+    8%      {margin-top:0;}
+    17%     {margin-top:-40px;}
+    25%     {margin-top:-40px;}
+    33%     {margin-top:-80px;}
+    37%     {margin-top:-80px;}
+    42%     {margin-top:-120px;}
+    50%     {margin-top:-120px;}
+    59%     {margin-top:-80px;}
+    68%     {margin-top:-80px;}
+    76%     {margin-top:-40px;}
+    85%     {margin-top:-40px;}
+    93%     {margin-top:0;}
+    100%    {margin-top:0;}
+}
+@keyframes slidemotto{
+    0%      {margin-top:0;}
+    8%      {margin-top:0;}
+    17%     {margin-top:-40px;}
+    25%     {margin-top:-40px;}
+    33%     {margin-top:-80px;}
+    37%     {margin-top:-80px;}
+    44%     {margin-top:-120px;}
+    50%     {margin-top:-120px;}
+    59%     {margin-top:-80px;}
+    68%     {margin-top:-80px;}
+    76%     {margin-top:-40px;}
+    85%     {margin-top:-40px;}
+    93%     {margin-top:0;}
+    100%    {margin-top:0;}
+}
+/* //// eindemotto //// */
+
+
+    /* GRAY HAX //////////////// */
+    @-webkit-keyframes GrayHX  {
+        0%      { opacity: 1.0; }
+        50%     { opacity: 0.7; }
+        60%     { opacity: 0.3; }
+        70%     { opacity: 0.7; }
+        100%    { opacity: 1.0; }
+    }
+    @-moz-keyframes GrayHX {
+        0%      { opacity: 1.0; }
+        50%     { opacity: 0.7; }
+        60%     { opacity: 0.3; }
+        70%     { opacity: 0.7; }
+        100%    { opacity: 1.0; }
+    }
+    @keyframes GrayHX {
+        0%      { opacity: 1.0; }
+        50%     { opacity: 0.7; }
+        60%     { opacity: 0.3; }
+        70%     { opacity: 0.7; }
+        100%    { opacity: 1.0; }
+    } /* ENDOFHAX ////////////// */
