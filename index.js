@@ -4,7 +4,9 @@ var http    = require('http').Server(app);
 var io      = require('socket.io')(http);
 var $       = require('jquery');
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static('public'));
+app.use(express.static('_includes'));
+app.use('_includes', express.static('public'));
 
 /* luister naar local port; 3000 */
 http.listen(3000, function(){
@@ -14,7 +16,6 @@ http.listen(3000, function(){
 
 
 app.get('/', function(req, res){
-  console.log('meme');
   res.send('index.html');
 });
 
