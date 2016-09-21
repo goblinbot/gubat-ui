@@ -1,3 +1,7 @@
+* {
+  color: #FFFFFF;
+}
+
 html {
   box-sizing  : content-box;
   margin      : 0;
@@ -20,4 +24,11 @@ h1, h2, h3, h4 {
 p {
     margin-left : 5px;
     color       : #FFF;
+}
+
+.btn {
+  background-image: none;
+}
+.label {
+  font-weight : 600;
 }
