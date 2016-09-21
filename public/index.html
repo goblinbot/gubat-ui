@@ -1,32 +1,50 @@
-<!doctype html>
+<!DOCTYPE HTML>
 <html>
 
+
 <head>
-  <title>HIMAWARI 0451</title>
-  <link rel="stylesheet" href="/_includes/css/reset.css" />
+  <title>HIMAWARI 4.51</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport" />
+
+    <link rel="stylesheet" type="text/css" href="/_includes/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/_includes/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/_includes/css/keyframes.css" />
+    <link rel="stylesheet" type="text/css" href="/_includes/css/orbit.css" />
+    <link rel="stylesheet" type="text/css" href="/_includes/css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
 </head>
+
 <body>
-
-  <h1>Testing grounds</h1>
-
-  <button id="clickpress">WITNESS</button>
-
-  <div id="WITNESS"></div>
+<div id="stargate"></div>
 
 
-  <!-- Kijk mama, javascripts! -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src="/socket.io/socket.io.js"></script>
-  <script>
-  $(function(){
-    var socket = io();
-  });
 
-  $('#clickpress').click(function(){
-    console.log('witness?');
-    $('#WITNESS').load('loaded.html');
-  });
-  </script>
+<div class="container">
+  <h1>KUVAKEI POLYMORPHS</h1>
+</div>
 
+<div class="container borders container_outside">
+  <div class="container borders container_inside">
+
+    <div class="row mZero">
+      <div class="col-md-3 hidden-xs">
+
+      </div>
+
+      <div class="col-md-9 col-xs-12">
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+  <script type="text/javascript" src="/_includes/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/_includes/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/_includes/js/functions.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 </body>
 </html>
