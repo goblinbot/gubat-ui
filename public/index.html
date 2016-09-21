@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>HIMAWARI 0451</title>
+  <link rel="stylesheet" href="/_includes/css/reset.css" />
+</head>
+<body>
+
+  <h1>Testing grounds</h1>
+
+  <button id="clickpress">WITNESS</button>
+
+  <div id="WITNESS"></div>
+
+
+  <!-- Kijk mama, javascripts! -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+  $(function(){
+    var socket = io();
+  });
+
+  $('#clickpress').click(function(){
+    console.log('witness?');
+    $('#WITNESS').load('loaded.html');
+  });
+  </script>
+
+</body>
+</html>
