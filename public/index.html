@@ -18,10 +18,10 @@
 <body>
 <div id="stargate"></div>
 
+
 <!-- HOOFDCONTAINER -->
 <div class="xs-hidden sm-hidden col-md-1 col-lg-1">      &nbsp;</div>
 <div class="container-fluid col-xs-12 col-sm-12 col-md-10 col-lg-10">
-
 
 
 
@@ -29,7 +29,17 @@
 <div class="container-fluid logoBar">
   <div class="col-xs-9">
     <!-- id="orbit" -->
-    <h1>KUVAKEI POLYMORPHS</h1>
+    <div id="orbit">
+      <h1 class="noselect">
+          <em>KUVAKEI</em>
+          <em>&nbsp;</em>
+          <em>P</em>
+          <em>O</em>
+          <em>LYM</em>
+          <em>O</em>
+          <em>RPHICS</em>
+        </h1>
+    </div>
   </div>
 
   <div class="col-xs-3 text-right">
@@ -60,6 +70,7 @@
                       <li>You deserve the future.</li>
                       <li>Overclocking You. </li>
                       <li>You cannot stop progress.</li>
+                      <li class="Rd blinktext">NEURAL_PATH 66271.8878R</li>
                       <li>Every iteration an advancement.</li>
                   </ul>
               </div>
@@ -93,28 +104,55 @@
               </p>
           </div>
 
-          <div class="boxLeft b2 borders row">
-            <div class="col-xs-1 Rd text-center" style="font-weight:700;">
-              0 <br/>
-              .. <br/>
-              . <br/>
-              ^ <br/>
-              &nbsp; <br/>
-              &nbsp; <br/>
-              . <br/>
-              + <br/>
-              &nbsp; <br/>
-              &nbsp; <br/>
-              0 <br/>
-              0 <br/>
-              0 <br/>
+          <div class="boxLeft b1 borders row">
+            <div class="bar col-xs-12">
+                &nbsp;address - 514::11.80.8.45 \ sysadmin: <span class="Gy"> eÃŒÂ¢Ã’â€°</span>
             </div>
-            <div class="col-xs-11">
+
+            <div class="col-xs-12">
+
+              <div class="col-xs-10" style="padding: 0.4rem 0">
+                ESTIMATED DAYS UNTIL SINGULARITY EVENT: <span id="countdownDays" class="offline">&nbsp;</span> <br/>
+                <span class="text-muted" style="font-size:0.7rem;">AS OF THIS UPDATE, PREVIOUS VERSIONS OF HUMANITY WILL NO LONGER BE SUPPORTED.</span>
+              </div>
+              <div class="col-xs-2">
+                <div class="SPACESHIPS noselect">&nbsp;</div>
+              </div>
+
+
+              <table border="0" cellspacing="2" id="statusBars">
+                <tr>
+                  <td colspan="2">Server health:</td>
+                  <td colspan="2"><img src="_images/health_bar.gif"/></td>
+                </tr>
+                <tr style="font-size:75%;">
+                  <td>Connection:&nbsp;</td>
+                </tr>
+                <tr>
+                  <td><span id="uiStatus" style="font-size:100%;" class="online">ONLINE</span></td>
+                  <td colspan="3"><img src="_images/ani_bars.gif"/></td>
+                </tr>
+              </table>
 
             </div>
           </div>
 
+          <div class="boxleft b2">
+            <div class="bar">
+              <p style="margin:0;">
+                W[<span class="Cy">"HOL"</span>][
+                  <span class="Ye">J240350</span> => D0M,
+                  <span class="Ye">J110018</span> => MI4M,
+                  <span class="Ye">J100820</span> => RES,
+                  <span class="Ye">J151530</span> => N0VC ]
+              </p>
+            </div>
 
+            <div class="clockbar">&nbsp;</div>
+            <did id="clockContainer">
+              <div id="clock"></div>
+            </div>
+          </div>
 
         </div>
       </div>
@@ -133,7 +171,7 @@
 
   <script type="text/javascript" src="/_includes/js/jquery.min.js"></script>
   <script type="text/javascript" src="/_includes/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="/_includes/js/functions.js"></script>
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="/_includes/js/functions.js"></script>
 </body>
 </html>

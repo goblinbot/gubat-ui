@@ -133,7 +133,7 @@ svg{
 
 /* //// motto ///////// */
 @-webkit-keyframes slidemotto {
-    0%      {margin-top:0;}
+    /*0%      {margin-top:0;}
     8%      {margin-top:0;}
     17%     {margin-top:-40px;}
     25%     {margin-top:-40px;}
@@ -146,39 +146,62 @@ svg{
     76%     {margin-top:-40px;}
     85%     {margin-top:-40px;}
     93%     {margin-top:0;}
+    100%    {margin-top:0;}*/
+    0%      {margin-top:0;}
+    6%      {margin-top:0;}
+    12%     {margin-top:-40px;}
+    19%     {margin-top:-40px;}
+    25%     {margin-top:-80px;}
+    31%     {margin-top:-80px;}
+    37%     {margin-top:-120px;}
+    44%     {margin-top:-120px;}
+    50%     {margin-top:-160px;}
+    56%     {margin-top:-160px;}
+    62%     {margin-top:-120px;}
+    71%     {margin-top:-120px;}
+    77%     {margin-top:-80px;}
+    83%     {margin-top:-80px;}
+    89%     {margin-top:-40px;}
+    95%     {margin-top:-40px;}
     100%    {margin-top:0;}
 }
 @-moz-keyframes slidemotto {
-    0%      {margin-top:0;}
-    8%      {margin-top:0;}
-    17%     {margin-top:-40px;}
-    25%     {margin-top:-40px;}
-    33%     {margin-top:-80px;}
-    37%     {margin-top:-80px;}
-    42%     {margin-top:-120px;}
-    50%     {margin-top:-120px;}
-    59%     {margin-top:-80px;}
-    68%     {margin-top:-80px;}
-    76%     {margin-top:-40px;}
-    85%     {margin-top:-40px;}
-    93%     {margin-top:0;}
-    100%    {margin-top:0;}
+  0%      {margin-top:0;}
+  6%      {margin-top:0;}
+  12%     {margin-top:-40px;}
+  19%     {margin-top:-40px;}
+  25%     {margin-top:-80px;}
+  31%     {margin-top:-80px;}
+  37%     {margin-top:-120px;}
+  44%     {margin-top:-120px;}
+  50%     {margin-top:-160px;}
+  56%     {margin-top:-160px;}
+  62%     {margin-top:-120px;}
+  71%     {margin-top:-120px;}
+  77%     {margin-top:-80px;}
+  83%     {margin-top:-80px;}
+  89%     {margin-top:-40px;}
+  95%     {margin-top:-40px;}
+  100%    {margin-top:0;}
 }
 @keyframes slidemotto{
-    0%      {margin-top:0;}
-    8%      {margin-top:0;}
-    17%     {margin-top:-40px;}
-    25%     {margin-top:-40px;}
-    33%     {margin-top:-80px;}
-    37%     {margin-top:-80px;}
-    44%     {margin-top:-120px;}
-    50%     {margin-top:-120px;}
-    59%     {margin-top:-80px;}
-    68%     {margin-top:-80px;}
-    76%     {margin-top:-40px;}
-    85%     {margin-top:-40px;}
-    93%     {margin-top:0;}
-    100%    {margin-top:0;}
+  0%      {margin-top:0;}
+  6%      {margin-top:0;}
+  12%     {margin-top:-40px;}
+  19%     {margin-top:-40px;}
+  25%     {margin-top:-80px;}
+  31%     {margin-top:-80px;}
+  37%     {margin-top:-120px;}
+  44%     {margin-top:-120px;}
+  50%     {margin-top:-160px;}
+  56%     {margin-top:-160px;}
+  62%     {margin-top:-120px;}
+  71%     {margin-top:-120px;}
+  77%     {margin-top:-80px;}
+  83%     {margin-top:-80px;}
+  89%     {margin-top:-40px;}
+  95%     {margin-top:-40px;}
+  100%    {margin-top:0;}
 }
 /* //// eindemotto //// */
 

@@ -1,7 +1,6 @@
 /*ORBIT ANIMATIE*/
 
 #orbit {
-    max-width: 480px;
     position: absolute;
 }
 
@@ -10,10 +9,8 @@
     display: flex;
     /*justify-content: center;*/
     position: absolute;
-    left: 9vw;
     top: 16px;
     top: 1rem;
-    max-width: 480px;
 }
 
 #orbit h1::before {
@@ -67,20 +64,20 @@
 }
 
 @media (max-width: 1204px) {
-    
+
     #orbit h1 {
         left: 16px;
         left: 1rem;
     }
-    
+
     #orbit h1::before {
         left: 186px;
     }
-    
+
     #orbit em.planet {
         -webkit-animation   : planet-rotate 0s linear none;
        animation           : planet-rotate 0s linear none;
-       position            : relative;       
+       position            : relative;
     }
 }
 
