@@ -26,9 +26,14 @@ p {
     color       : #FFF;
 }
 
+/* bootstrap elemenen waar ik het niet mee eens ben. */
 .btn {
   background-image: none;
 }
 .label {
-  font-weight : 600;
+  font-weight   : 600;
+}
+.row {
+  margin-left   : 0;
+  margin-right  : 0;
 }
