@@ -178,6 +178,8 @@
     /*background  : url("/_images/folder_default_Y.png");*/
     background-repeat: no-repeat !important;
     transition  : 0.4s;
+    margin-left :auto;
+    margin-right:auto;
 }
 .imgfolder p {
     position    : relative;
