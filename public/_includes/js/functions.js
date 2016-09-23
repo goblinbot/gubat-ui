@@ -1,18 +1,10 @@
 var socket = io();
 
-
-
-
-
-
-
-
-
-/* GLOCK GLOCK GLOCK WATCHING MOTHERFUCKERS DOCK */
+/* CLOCK CLOCK CLOCK WATCHING MOTHERFUCKERS DOCK */
 function updateClock ( )
  	{
  	var currentTime = new Date ( );
-  	var currentHours = currentTime.getHours ( );
+  	var currentHours   = currentTime.getHours ( );
   	var currentMinutes = currentTime.getMinutes ( );
   	var currentSeconds = currentTime.getSeconds ( );
 
@@ -20,17 +12,11 @@ function updateClock ( )
   	currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
   	currentSeconds = ( currentSeconds < 10 ? "0" : "" ) + currentSeconds;
 
-  	/* Choose either "AM" or "PM" as appropriate */
-  	var timeOfDay = ( currentHours < 12 ) ? "AM" : "PM";
-
-  	/* Convert the hours component to 12-hour format if needed */
-  	/*currentHours = ( currentHours > 12 ) ? currentHours - 12 : currentHours;*/
-
   	/* Convert an hours component of "0" to "12" */
   	currentHours = ( currentHours == 0 ) ? 12 : currentHours;
 
   	/* Compose the string for display */
-  	var currentTimeString = currentHours + ":" + currentMinutes + ":" + currentSeconds/* + " " + timeOfDay*/;
+  	var currentTimeString ="[&nbsp;" + currentHours + ":" + currentMinutes + ":" + currentSeconds + "&nbsp;]";
 
 
    	$("#clock").html(currentTimeString);

@@ -100,9 +100,9 @@
 .motto ul {
     margin-left         : -12px;
     list-style          : none;
-    animation           : slidemotto 12s linear 0s normal infinite;
-    -moz-animation      : slidemotto 12s linear 0s normal infinite;
-    -webkit-animation   : slidemotto 12s linear 0s normal infinite;
+    animation           : slidemotto 16s linear 0s normal infinite;
+    -moz-animation      : slidemotto 16s linear 0s normal infinite;
+    -webkit-animation   : slidemotto 16s linear 0s normal infinite;
         animation-delay         : 1s;
         -moz-animation-delay    : 1s;
         -webkit-animation-delay : 1s;
@@ -125,7 +125,7 @@
    margin-top   : 2px;
 }
 
-#clockbar:before, #clockbar::before {
+.clockbar:before, .clockbar::before {
   display     : block;
   top         : 35px;
   position    : absolute;
@@ -133,8 +133,9 @@
   height      : 3px;
   background  : #FF9933;
 }
-  #clockbar {
+  .clockbar {
     margin-bottom : 10px;
+    margin-top    : 10px;
     padding       : 3px;
     border-top    : 3px solid #FF9933;
     border-bottom : 1px solid #FF9933;
@@ -142,11 +143,9 @@
     overflow      : hidden;
     font-size     : 8pt;
   }
-    #clockContainer #clock {
-      float       : left;
+    .clockContainer #clock {
       color       : #AAA;
       overflow    : hidden;
-      margin-top  : 8px;
       font-size   : 64px;
       font-size   : 4rem;
     }
