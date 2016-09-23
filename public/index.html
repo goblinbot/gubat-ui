@@ -56,7 +56,7 @@
 
     <div class="row mZero">
       <!-- LEFT -->
-      <div id="left" class="col-md-4 hidden-xs">
+      <div id="left" class="col-md-4 hidden-sm hidden-xs">
         <div class="row1"> <!-- i.v.m. animatie -->
 
           <div class="row">
@@ -151,20 +151,18 @@
             </div>
           </div>
           <div class="boxleft b2">
-            <!-- <div class="clockbar">&nbsp; -->
               <did class="clockContainer text-center">
                 <div id="clock"></div>
               </div>
-            <!-- </div> -->
             </div>
           </div>
 
+          <!-- RIGHT -->
+          <div id="right" class="col-md-8 col-sm-12 col-xs-12"></div>
+          <!-- EINDE RIGHT -->
+
+        <!-- EINDE MAIN -->
         </div>
-      </div>
-
-      <!-- RIGHT -->
-      <div id="right" class="col-md-8 col-xs-12">
-
       </div>
     </div>
 
@@ -178,5 +176,6 @@
   <script type="text/javascript" src="/_includes/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>
   <script type="text/javascript" src="/_includes/js/functions.js"></script>
+  <script>$('#right').load('default.html');</script>
 </body>
 </html>
