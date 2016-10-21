@@ -1,4 +1,5 @@
 var socket = io();
+var selector;
 
 /* CLOCK CLOCK CLOCK WATCHING MOTHERFUCKERS DOCK */
 function updateClock ( )
@@ -36,9 +37,28 @@ function holiday() {
   $("#countdownDays").html(daysLeft);
 }
 
+function navigate(selector) {
+  console.log(selector);
+
+  $.get(selector + ".html")
+      .done(function(){
+        $("#right").empty();
+          $("#right").load(selector + ".html");
+      })
+      .fail(function(){
+        $("#right").empty();
+          $("#right").load("404.html");
+      });
+
+
+  var selector = selector+".html";
+  $('#right').load(selector);
+}
+
 
 $(document).ready(function()
 {
    setInterval('updateClock()', 1000);
    setInterval('holiday()'    , 1000);
+
 });

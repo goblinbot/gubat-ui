@@ -14,14 +14,16 @@ http.listen(3000, function(){
 });
 
 
+app.use(function(req, res, next) {
+  res.status(404).send('<body style="background:#000;"><h1 style="color:#EEE">404 NOT F0UND</h1></body>');
+});
 
 app.get('/', function(req, res){
   res.send('index.html');
 });
 
-app.get('/loaded', function(req, res){
+app.get('404.html', function(req, res){
   console.log('GUBAT NAVIGATIE SUCCESVOL GEPORT, PRAISE THE METAL MOT');
-  res.send('loaded.html');
 });
 
 io.on('connection', function (socket) {
