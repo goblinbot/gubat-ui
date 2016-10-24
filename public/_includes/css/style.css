@@ -19,6 +19,7 @@
 }
 .online     {background: rgba(166, 216, 83, 0.7);}
 .offline    {background: #737373;}
+.offlineDark{background: #444444;}
 .hosting    {background: #005B8E;}
 .critical   {background: #990000;}
 .unknown    {background: #FF9933;}
@@ -44,6 +45,18 @@
     z-index           : -5;
   }
   .seperate-1 {margin-bottom:18px;}
+
+  .bar-right {
+    float         : right;
+    cursor        : pointer;
+    transition    : 0.3s;
+    padding-right : 3px;
+    padding-left  : 3px;
+    border-radius : 1px;
+  }
+  .bar-right:hover {
+    background  : #333;
+  }
 
 #loading {
     position    : absolute;
@@ -144,6 +157,10 @@
    flex-direction: row;
    margin-bottom: 4px;
    margin-top   : 2px;
+}
+.bar .bar-label {
+  padding       : 1px 2px 2px 2px;
+  border-radius : 0;
 }
 
     /*border-top    : 3px solid #FF9933;
