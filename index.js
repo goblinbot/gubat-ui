@@ -15,15 +15,12 @@ http.listen(3000, function(){
 
 
 app.use(function(req, res, next) {
-  res.status(404).send('<body style="background:#000;"><h1 style="color:#EEE">404 NOT F0UND</h1></body>');
+  res.status(404).send('<body style="background:#000;"><h1 style="color:#EEE;font-family:sans-serif;font-size:4rem;margin-top:25%;margin-left:33%;">404 NOT F0UND</h1></body>');
+  console.log(' !! Outside elements attempting to access non-existant paths and/or information. Deploying whiteCell()')
 });
 
 app.get('/', function(req, res){
   res.send('index.html');
-});
-
-app.get('404.html', function(req, res){
-  console.log('GUBAT NAVIGATIE SUCCESVOL GEPORT, PRAISE THE METAL MOT');
 });
 
 io.on('connection', function (socket) {

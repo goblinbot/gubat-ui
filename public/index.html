@@ -43,7 +43,7 @@
   </div>
 
   <div class="col-xs-3 text-right">
-    <div class="CODECYAN">toggleknop</div>
+    <div class="CODECYAN noselect">&nbsp;</div>
   </div>
 
 </div>
@@ -99,7 +99,7 @@
                 <br/>!! node <span class="Cy" style='line-height:1.4;'>'ASCENDANCY'</span> => <span class="label label-danger blinktext">unstable</span>
               </p>
 
-              <p style="font-size:0.9rem;">
+              <p class="console" style="font-size:0.9rem;">
                   SRV1: <span class='Or'>~$ OVERLOAD[<span class="Ye">6101</span>]
                   <br/><span class="Ye">RUNTIME:&_PERSONALITY</span> EXCEEDS '1';</span></span>
                   <br/>SRV1: <span class='Or'>OutboundConnection[<span class='Ye'>&_SAT</span>]</span> INIT 'Service+transmission+channel' 0 0 870 250+2.1.5+Recipient=OK
@@ -122,13 +122,18 @@
               </div>
 
 
-              <table border="0" cellspacing="2" id="statusBars">
+              <table border="0" cellspacing="2" id="statusBars" class="console">
                 <tr>
-                  <td colspan="2">Server health:</td>
-                  <td colspan="2"><img src="_images/health_bar.gif"/></td>
+                  <td colspan="3">Server health:</td>
                 </tr>
-                <tr style="font-size:75%;">
-                  <td>Connection:&nbsp;</td>
+                <tr>
+                  <td colspan="2"><img src="_images/health_bar.gif"/></td>
+                  <td><span class="online">ONLINE</span></td>
+                </tr>
+                <tr>
+                  <td class="statusName">Absolution</td>
+                  <td class="statusName">Providence</td>
+                  <td class="statusName">Ascendancy</td>
                 </tr>
                 <tr>
                   <td colspan="3"><img src="_images/ani_bars.gif"/></td>
@@ -150,6 +155,9 @@
             </div>
           </div>
           <div class="boxleft b2">
+            <div class="Or console text-center" style="margin-top:16px;">
+              TZ: ICC.south / EOS 'Bastion'
+            </div>
               <did class="clockContainer text-center">
                 <div id="clock"></div>
               </div>
