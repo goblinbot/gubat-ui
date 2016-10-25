@@ -12,43 +12,61 @@ var connection = mysql.createConnection({
   database : 'thijsboerma_maati'
 });
 
-  connection.connect();
+/* data vars */
+var countClients = 0;
+
+/* INIT */
+connection.connect();
 
 app.use(express.static('public'));
 app.use(express.static('_includes'));
 app.use('_includes', express.static('public'));
 
-/* luister naar local port; 3000 */
 http.listen(3000, function(){
   console.log('Activity detected on pathway *:3000 . Stand by for engagement.')
 });
 
+
+/* pathing / routing */
 app.get('/', function(req, res){
-  res.send('index.html');
+  res.sendFile('index.html', {"root": __dirname+'/public/'});
 });
 
 io.on('connection', function (socket) {
 
-  console.log('User has connected succesfully.');
+  countClients++;
+  console.log('User has entered the network. '+countClients+' active clients.');
 
-  connection.query('SELECT `name`, `status` FROM agents WHERE `status` != "offline" AND `status` != "MIA" AND `status` != "inactive"', function(err, rows, fields) {
-    if (!err)
-      console.log('wie is de lul?: ', rows);
-    else
-      console.log('Error while performing Query.');
+  /*status*/
+  socket.on('statuspage', function(msg){
+    connection.query('SELECT `name`,`rank`,`orders`,`backup`,`status` FROM agents WHERE `status` != "deceased" AND `status` != "MIA" AND `status` != "inactive" ORDER BY `agent_id` ASC', function(err, rows, fields) {
+      if (!err) {
+        io.emit('statuspage', rows);
+      } else {
+        console.log('Error while performing DB Query.');
+      }
+    });
   });
+
+  /*MIA*/
+  socket.on('showRip', function(msg){
+    connection.query('SELECT `name`,`callsign`,`orders`,`rip_timestamp`,`status` FROM agents WHERE `status` = "deceased" OR `status` = "MIA" ORDER BY `agent_id` ASC', function(err, rows, fields) {
+      if (!err) {
+        io.emit('showRip', rows);
+      } else {
+        console.log('Error while performing DB Query.');
+      }
+    });
+  });
+
 
   socket.on('disconnect', function(){
-    console.log('user signed out. Deploying whiteCell()');
-  });
-
-  socket.on('loadstatus', function(msg){
-    io.emit('loadedpage', msg);
+    countClients = (countClients-1);
+    console.log('User attempting exit. Deploying whiteCell()..  '+countClients+' active clients.');
   });
 
 });
 
-
 app.use(function(req, res, next) {
-  res.status(404).send('<body style="background:#000;"><h1 style="color:#EEE;font-family:sans-serif;font-size:4rem;margin-top:25%;margin-left:33%;">404 NOT F0UND</h1></body>');
+  res.status(404).sendFile("404plainVers.html", {"root": __dirname+'/public/'});
 });

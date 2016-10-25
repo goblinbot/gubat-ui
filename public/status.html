@@ -15,21 +15,159 @@
   <p class="console">..$\\ <span class="Ye fnc" onclick="navigate('default')">ROOT_RETURN();</span> \\ returns to root</p>
   <br/>
 
-  <h3>[ <span class="Ye">808 'GUBAT BANTAY'</span> ACTIVE USERS : <span id="countUsers" class="Ye">0</span> / <span id="countUsersTotal" class="Ye">0</span> ]</h3>
+  <h3 id="statusTitle"></h3>
 
   <div class="row">
 
-
-
-
-
-
-
-
-
-
-
+    <div id="statusContainer" class="b1"></div>
 
   </div>
-<!-- einde 'body' row2 b2 -->
+<!-- einde 'body' row2 b2, script uitvoeren -->
+
+<script>
+
+function showRip() {
+  socket.emit('showRip'), 'true';
+  $('#statusContainer').empty();
+  $('h3#statusTitle').empty();
+  $('h3statusTitle').html('[ <span class="Ye">MIA</span> // <span class="Ye">DECEASED</span> ]');
+}
+
+$(document).ready(function(){
+
+  socket.emit('statuspage'), 'true';
+
+  socket.on('statuspage', function(rows){
+
+    $('h3#statusTitle').empty();
+    $('h3#statusTitle').html('[ <span class="Ye">Anim 808 &#39;GUBAT BANTAY&#39;</span> ACTIVE USERS : <span id="countUsers">0</span> / <span id="countUsersTotal" class="Ye">0</span> ]');
+
+    /* defaults */
+    var activeAgents  = 0;
+    var activeClass   = 'Gy';
+    var statusResults = "";
+    var randDelay     = 1;
+
+    for (var i = 0; i < rows.length; i++){
+      /* active counter */
+      if(rows[i].status !== 'offline' && rows[i].status !== 'critical') {
+        activeAgents++;
+      }
+
+      randDelay++;
+      if (randDelay > 4) {
+        randDelay = 2;
+      }
+
+      /* TE PRINTEN : */
+      /* NAME - RANK - STATUS - BACKUP - ORDERS */
+
+      statusResults = statusResults + (
+        '<div class="statusBlock col-xs-12 col-sm-6 col-md-6 col-lg-4">'
+        + '<div class="block borders b'+ randDelay +'">'
+          + '<h3 class="bordered">' + rows[i].name + '</h3>'
+          + '<p>Rank: ' + rows[i].rank + '</p>'
+            + '<table class="table statustable">'
+              + '<tr> <td>STATUS</td> <td> <span class="' + rows[i].status + '">' + rows[i].status + '</span> </td> </tr>'
+              + '<tr> <td>CUR. ORDERS</td> <td>' + rows[i].orders + '</td></tr>'
+              + '<tr> <td>LAST BACKUP</td> <td>' + rows[i].backup + '</td></tr>'
+            + '</table>'
+          + '</div>'
+        + '</div>');
+
+    }
+    /* einde loop, voeg nog 1 blok toe. */
+    statusResults = statusResults + (
+      '<div class="statusBlock col-xs-12 col-sm-6 col-md-6 col-lg-4">'
+      + '<div class="block borders b4">'
+        + '<h3 class="bordered">DECEASED // MIA</h3>'
+        + '<div class="imgfolder smallfolder" onclick="showRip();"></div>'
+      + '</div>'
+    + '</div>');
+
+      /* pas aantalopmaak aan */
+      if (activeAgents < 3) {
+        activeClass = 'Rd';
+      } else if (activeAgents < 5) {
+        activeClass = 'Or';
+      } else {
+        activeClass = 'Ye';
+      }
+
+
+
+    /* PRINT */
+    $('#statusContainer').empty();
+    $('#statusContainer').html('<div class="row mZero">'+statusResults+'</div>');
+      $('#countUsers').html(activeAgents).addClass(activeClass);
+        $('#countUsersTotal').html(rows.length);
+
+  }); /* if emit statuspage gebeurd */
+
+  /* RIP // MIA */
+  socket.on('showRip', function(rows){
+
+    var statusResults = "";
+    var randDelay     = 1;
+
+    for (var i = 0; i < rows.length; i++){
+
+      randDelay++;
+      if (randDelay > 4) {
+        randDelay = 2;
+      }
+
+      /* check 1 */
+      if(rows[i].callsign == null) {
+        rows[i].callsign = '-';
+      }
+      /* check 2 */
+      if(rows[i].status == 'MIA') {
+        activeClass = "unknown";
+      } else {
+        activeClass = "critical";
+      }
+
+      /* schrijf geSQL'd blok */
+      statusResults = statusResults + (
+        '<div class="statusBlock col-xs-12 col-sm-6 col-md-6 col-lg-4">'
+        + '<div class="block borders b'+ randDelay +'">'
+          + '<h3 class="bordered">' + rows[i].name + '</h3>'
+          + '<p>&#39; ' + rows[i].callsign + ' &#39;</p>'
+            + '<table class="table statustable console">'
+              + '<tr> <td>STATUS</td> <td> <span class="' + activeClass + '">' + rows[i].status + '</span> </td> </tr>'
+              + '<tr> <td>LAST KNOWN ORDERS</td> <td>' + rows[i].orders + '</td></tr>'
+              + '<tr> <td><span class="glyphicon glyphicon-flash"></span>&nbsp; TIMESTAMP</td> <td>' + rows[i].rip_timestamp + '</td></tr>'
+            + '</table>'
+          + '</div>'
+        + '</div>');
+
+    }
+
+    /* einde loop, voeg nog 2 blokken toe. */
+    statusResults = statusResults + (
+      '<div class="statusBlock col-xs-12 col-sm-6 col-md-6 col-lg-4">'
+      + '<div class="block borders b4">'
+        + '<h3><span class="Rd blinktext">&amp;ERR:NOTFOUND\</span><span class="Or">NAME</span></h3>'
+        + '<p>&#39;DUCK//</p>'
+        + '<p>STATUS : <span class="Gy">~$MARKEDFORDELETE</span></p>'
+        + '<p>PLEASE CONTACT SYSADM<span class="Or blinktext">QUACK</span>IN</p>'
+      + '</div>'
+    + '</div>');
+    statusResults = statusResults + (
+      '<div class="statusBlock col-xs-12 col-sm-6 col-md-6 col-lg-4">'
+      + '<div class="block borders b4">'
+        + '<h3 class="bordered">RETURN:STATUS</h3>'
+        + '<div class="imgfolder smallfolder" onclick="navigate(&#39;status&#39;)"></div>'
+      + '</div>'
+    + '</div>');
+
+    /* PRINT */
+    $('#statusContainer').empty();
+    $('#statusContainer').html('<div class="row mZero">'+statusResults+'</div>');
+
+  });
+
+});
+</script>
 </div>

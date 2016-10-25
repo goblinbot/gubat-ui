@@ -299,8 +299,80 @@ p.console, .console {
 
 .smallfolder, .smallfolder:hover {
     background-repeat:no-repeat;
-    background-size : 200px 160px;
-    width           : 216px;
-    height          : 176px;
+    background-size : 166px 130px;
+    background-position: center;
+    width           : 90%;
+    height          : 136px;
     margin          : 8px;
+}
+
+/* status pagina */
+.statusBlock {
+  min-height   : 222px;
+  padding      : 3px;
+}
+  .statusBlock .block {
+    padding    : 4px;
+    min-height : 214px;
+    height     : 100%;
+  }
+
+  .statustable {
+    font-size   : 100%;
+    font-size   : 1rem;
+    margin      : 2px;
+  }
+    table.statustable     { padding-bottom  : 16px; }
+    .statustable.table td, .statustable.table tr  { border: 0!important; padding: 2px 2px 2px 5px; font-size: 0.9rem; }
+
+
+
+/* 404 en spaceships */
+
+.overlay-black {
+  position  : fixed;
+  top       : 50%;
+  left      : 50%;
+  min-width : 100%;
+  min-height: 100%;
+  width     : auto;
+  height    : auto;
+  z-index   : -1;
+  background-size: cover;
+  background: rgba(0, 0, 0, 0.6);
+}
+.overlay-card {
+  z-index         : 2;
+  background      : rgba(0, 0, 0, 0.8);
+  box-shadow      : 1px 1px 1rem rgba(0, 0, 0, 0.8);
+  position        : fixed;
+  top             : 40%;
+  left            : 40%;
+  border-radius   : 1rem;
+  padding         : 2rem;
+  transition      : 0.2s;
+}
+.overlay-card:hover {
+  background        : rgba(0, 0, 0, 0.6);
+  border            : 1px solid rgba(255, 204, 0, 0.39);
+  transform         : scale(1.3);
+}
+  .overlay-card h1, .overlay-card a h1, a:link, a:hover, a:visited {
+    z-index         : 3;
+    text-decoration : none;
+  }
+video#bgvid {
+    position  : fixed;
+    top       : 50%;
+    left      : 50%;
+    min-width : 100%;
+    min-height: 100%;
+    width     : auto;
+    height    : auto;
+    z-index   : -100;
+    -ms-transform     : translateX(-50%) translateY(-50%);
+    -moz-transform    : translateX(-50%) translateY(-50%);
+    -webkit-transform : translateX(-50%) translateY(-50%);
+    transform         : translateX(-50%) translateY(-50%);
+    background-size   : cover;
 }

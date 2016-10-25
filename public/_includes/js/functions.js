@@ -1,5 +1,7 @@
 var socket = io();
 var selector;
+var Jita_status = 0;
+
 
 /* CLOCK CLOCK CLOCK WATCHING MOTHERFUCKERS DOCK */
 function updateClock ( )
@@ -38,12 +40,11 @@ function holiday() {
 }
 
 function navigate(selector) {
-  console.log(selector);
 
   $.get(selector + ".html")
       .done(function(){
         $("#right").empty();
-          $("#right").load(selector + ".html");
+          $("#right").load(selector);
       })
       .fail(function(){
         $("#right").empty();
@@ -55,6 +56,23 @@ function navigate(selector) {
   $('#right').load(selector);
 }
 
+function spaceships() {
+
+  if(Jita_status == 0){
+
+    $('#stargate').html("&nbsp;[ <span class='Ye blinktext'>LOADING...</span> ]");
+    $('#stargate').load("/_includes/misc/gate.html");
+    Jita_status = 1;
+
+  } else if (Jita_status == 1) {
+    $('#stargate').hide();
+    Jita_status = 2;
+  } else {
+    $('#stargate').show();
+    Jita_status = 1;
+  }
+
+}
 
 $(document).ready(function()
 {

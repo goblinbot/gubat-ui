@@ -39,6 +39,7 @@
     -webkit-animation   : planet-rotate 3s linear infinite;
     animation           : planet-rotate 3s linear infinite;
     position            : relative;
+    z-index             : -1;
 }
 
 #orbit em.planet::before {
@@ -59,8 +60,8 @@
 }
 
 #orbit em.planet.right {
-    -webkit-transform-origin: -34px 25px; /* !!! 34 is het magische mingetal? !!! */
-    transform-origin: -34px 25px;
+    -webkit-transform-origin: -33px 25px; /* !!! 34 is het magische mingetal? !!! */
+    transform-origin: -33px 25px;
 }
 
 @media (max-width: 1204px) {
