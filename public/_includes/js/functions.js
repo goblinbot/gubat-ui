@@ -1,10 +1,22 @@
-var socket = io();
-var selector;
+var socket      = io();
 var Jita_status = 0;
+var CoCyan      = 0;
+var selector    = "";
+
+/* toggle kleurenschemas */
+$(".CODECYAN").click(function(){
+    if (CoCyan == 0) {
+        $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', '/_includes/css/codeY.css') );
+        CoCyan = 1;
+    } else {
+        $('link[rel=stylesheet][href~="/_includes/css/codeY.css"]').remove();
+        CoCyan = 0;
+    }
+});
 
 
 /* CLOCK CLOCK CLOCK WATCHING MOTHERFUCKERS DOCK */
-function updateClock ( )
+function updateClock ()
  	{
  	var currentTime = new Date ( );
   	var currentHours   = currentTime.getHours ( );

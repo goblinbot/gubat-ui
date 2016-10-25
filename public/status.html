@@ -1,6 +1,10 @@
-<div id="loading">
+<div id="loading" class="hidden-xs hidden-sm">
     <img src="_images/transfer_halftime.gif"/>
 </div>
+<div id="loadingMobile" class="hidden-md hidden-lg">
+  <img src="_images/loops/signal.gif"/>
+</div>
+
 <div class="row2 b2">
   <br/>
 
@@ -30,7 +34,7 @@ function showRip() {
   socket.emit('showRip'), 'true';
   $('#statusContainer').empty();
   $('h3#statusTitle').empty();
-  $('h3statusTitle').html('[ <span class="Ye">MIA</span> // <span class="Ye">DECEASED</span> ]');
+  $('h3#statusTitle').html('[ <span class="Ye">MIA</span> // <span class="Ye">DECEASED</span> ] <span class="blinktext">... loading</span>');
 }
 
 $(document).ready(function(){
@@ -137,7 +141,7 @@ $(document).ready(function(){
             + '<table class="table statustable console">'
               + '<tr> <td>STATUS</td> <td> <span class="' + activeClass + '">' + rows[i].status + '</span> </td> </tr>'
               + '<tr> <td>LAST KNOWN ORDERS</td> <td>' + rows[i].orders + '</td></tr>'
-              + '<tr> <td><span class="glyphicon glyphicon-flash"></span>&nbsp; TIMESTAMP</td> <td>' + rows[i].rip_timestamp + '</td></tr>'
+              + '<tr> <td colspan="2"><p style="border-top: 1px solid #333; padding-top:3px;">TIMESTAMP&nbsp;' + rows[i].rip_timestamp + '</p></td></tr>'
             + '</table>'
           + '</div>'
         + '</div>');
@@ -163,6 +167,8 @@ $(document).ready(function(){
     + '</div>');
 
     /* PRINT */
+    $('h3#statusTitle').empty();
+    $('h3#statusTitle').html('[ <span class="Ye">MIA</span> // <span class="Ye">DECEASED</span> ]');
     $('#statusContainer').empty();
     $('#statusContainer').html('<div class="row mZero">'+statusResults+'</div>');
 

@@ -1,3 +1,50 @@
+/* KLEUREN PALETTE /////////////////////////////
+// hologram interface blauw ///////////////////
+
+	=basis=
+	default holoblauw	   - #6FC0BA - rgb(111,192,186)
+	aquilablauw(shadow)	 - #005B8E - rgba(0,91,142)
+	zwart bg		         - #000
+	gallentekleur		     - rgb(38, 233, 202)
+	contrast-oranje		   - #FF9933 - rgb(255,153,51)
+
+	=tekst=
+	text wit	  - #FFF
+	gubat geel	- #FFCC00
+	ultra cyan	- #00EEEE
+
+	==status==
+	online:groen 	  - rgb(0,128,0)
+	blok:groen 	    - rgb(166, 216, 83)
+	offline:grijs 	- #737373 - hsla(0, 0%, 100%, 0.45)
+  crit:rood       - #990000
+
+
+
+
+/* //// AMBER ALERT /// */
+/*
+#F0C60C     - default?
+#E2DE84     - vaag
+#D1B800     - donkerder
+#EFCA08     - donker
+#FFCC00     - gubat geel
+
+#EDDA09     - erg geel
+///////////////
+#808808 - olijfgroen COINCIDENCE I FINK NT
+#808 // #880088 - royaal dugo paars
+
+/////
+////
+///
+*/
+
+body {
+  background  : url("/_images/citadel_85.jpg");
+}
+
+
 h3.bordered {
   border-bottom: 1px solid #333;
 }
@@ -27,9 +74,14 @@ h3.bordered {
 .unknown    {background: #FF9933;}
 .offworld   {background: #880088;}
 
-  /* SWITCH BUTTON */
-.CODECYAN, .SPACESHIPS, .fnc {
+.SPACESHIPS {
+  height    : 31px;
   cursor    : pointer;
+  background: url("/_images/toggle_sC.png");
+  position  : relative;
+}
+.SPACESHIPS:active {
+  top       : 2px;
 }
 
 .CODECYAN {
@@ -44,6 +96,7 @@ h3.bordered {
   -webkit-animation   : BorderDash  0.5s linear;
   -moz-animation      : BorderDash  0.5s linear;
   -animation          : BorderDash  0.5s linear;
+  cursor    : pointer;
 }
   .CODECYAN:active {
       top         : 37px;
@@ -88,6 +141,19 @@ h3.bordered {
     top         : 120px;
     visibility  : hidden;
 
+    -webkit-animation       : Loading 1.3s linear forwards;
+    -moz-animation          : Loading 1.3s linear forwards;
+    -animation              : Loading 1.3s linear forwards;
+    animation-delay         : 0.4s;
+    -moz-animation-delay    : 0.4s;
+    -webkit-animation-delay : 0.4s;
+}
+#loadingMobile  {
+    position    : fixed;
+    right       : 33%;
+    top         : 33%;
+    z-index     : 3;
+    visibility  : hidden;
     -webkit-animation       : Loading 1.3s linear forwards;
     -moz-animation          : Loading 1.3s linear forwards;
     -animation              : Loading 1.3s linear forwards;
@@ -288,6 +354,7 @@ p.console, .console {
     transition  : 0.6s;
 }
 .imgfolder p span:hover, .imgfolder span:hover {
+  color            : #FFCC00;
   background-color : #333;
   border-radius    : 3px;
 }
@@ -329,18 +396,6 @@ p.console, .console {
 
 /* 404 en spaceships */
 
-.overlay-black {
-  position  : fixed;
-  top       : 50%;
-  left      : 50%;
-  min-width : 100%;
-  min-height: 100%;
-  width     : auto;
-  height    : auto;
-  z-index   : -1;
-  background-size: cover;
-  background: rgba(0, 0, 0, 0.6);
-}
 .overlay-card {
   z-index         : 2;
   background      : rgba(0, 0, 0, 0.8);
@@ -369,7 +424,7 @@ video#bgvid {
     min-height: 100%;
     width     : auto;
     height    : auto;
-    z-index   : -100;
+    z-index   : -2;
     -ms-transform     : translateX(-50%) translateY(-50%);
     -moz-transform    : translateX(-50%) translateY(-50%);
     -webkit-transform : translateX(-50%) translateY(-50%);
