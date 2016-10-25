@@ -189,7 +189,10 @@ p.console, .console {
 
 
 /* herbruikbare classes */
-.fnc       { padding: 2px 4px; }
+.fnc       {
+  padding           : 2px 4px; 
+  cursor            : pointer;
+}
 .fnc:hover {
   border-radius     : 2px;
   background-color  : #222;

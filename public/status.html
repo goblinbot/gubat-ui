@@ -16,7 +16,7 @@
     </span>
   </div>
 
-  <p class="console">..$\\ <span class="Ye fnc" onclick="navigate('default')">ROOT_RETURN();</span> \\ returns to root</p>
+  <p class="console">..$\\ <span class="Ye fnc noselect" onclick="navigate('default')">ROOT_RETURN();</span> \\ returns to root</p>
   <br/>
 
   <h3 id="statusTitle"></h3>
@@ -35,6 +35,13 @@ function showRip() {
   $('#statusContainer').empty();
   $('h3#statusTitle').empty();
   $('h3#statusTitle').html('[ <span class="Ye">MIA</span> // <span class="Ye">DECEASED</span> ] <span class="blinktext">... loading</span>');
+}
+
+function backToStatus() {
+  socket.emit('statuspage'), 'true';
+  $('#statusContainer').empty();
+  $('h3#statusTitle').empty();
+  $('h3#statusTitle').html('[ <span class="Ye">Anim 808 &#39;GUBAT BANTAY&#39;</span> ACTIVE USERS : <span id="countUsers">0</span> / <span id="countUsersTotal" class="Ye">0</span> ] <span class="blinktext">... loading</span>');
 }
 
 $(document).ready(function(){
@@ -162,7 +169,7 @@ $(document).ready(function(){
       '<div class="statusBlock col-xs-12 col-sm-6 col-md-6 col-lg-4">'
       + '<div class="block borders b4">'
         + '<h3 class="bordered">RETURN:STATUS</h3>'
-        + '<div class="imgfolder smallfolder" onclick="navigate(&#39;status&#39;)"></div>'
+        + '<div class="imgfolder smallfolder" onclick="backToStatus()"></div>'
       + '</div>'
     + '</div>');
 

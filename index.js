@@ -41,7 +41,7 @@ io.on('connection', function (socket) {
   socket.on('statuspage', function(msg){
     connection.query('SELECT `name`,`rank`,`orders`,`backup`,`status` FROM agents WHERE `status` != "deceased" AND `status` != "MIA" AND `status` != "inactive" ORDER BY `agent_id` ASC', function(err, rows, fields) {
       if (!err) {
-        io.emit('statuspage', rows);
+        socket.emit('statuspage', rows);
       } else {
         console.log('Error while performing DB Query.');
       }
@@ -52,7 +52,7 @@ io.on('connection', function (socket) {
   socket.on('showRip', function(msg){
     connection.query('SELECT `name`,`callsign`,`orders`,`rip_timestamp`,`status` FROM agents WHERE `status` = "deceased" OR `status` = "MIA" ORDER BY `agent_id` ASC', function(err, rows, fields) {
       if (!err) {
-        io.emit('showRip', rows);
+        socket.emit('showRip', rows);
       } else {
         console.log('Error while performing DB Query.');
       }
