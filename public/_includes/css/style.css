@@ -190,7 +190,7 @@ p.console, .console {
 
 /* herbruikbare classes */
 .fnc       {
-  padding           : 2px 4px; 
+  padding           : 2px 4px;
   cursor            : pointer;
 }
 .fnc:hover {
@@ -434,3 +434,44 @@ video#bgvid {
     transform         : translateX(-50%) translateY(-50%);
     background-size   : cover;
 }
+
+
+/* BTN's custom */
+  .btn-gubat, .btn-gubat .glyphicon {
+    color           : #00EEEE;
+    border-color    : #00EEEE;
+    background-image: none;
+    background-color: transparent;
+  }
+  .btn-gubat:hover, .btn-gubat:hover .glyphicon {
+    /*color           : #FFFFFF;*/
+    color           : #222222;
+    border-color    : #00EEEE;
+    background-color: #00EEEE;
+  }
+  .btn-gubat-alt, .btn-gubat-alt .glyphicon {
+    color           : #FFCC00;
+    border-color    : #FFCC00;
+    background-image: none;
+    background-color: transparent;
+  }
+  .btn-gubat-alt:hover, .btn-gubat-alt:hover .glyphicon {
+    /*color           : #FFFFFF;*/
+    color           : #222222;    
+    border-color    : #FFCC00;
+    background-color: #FFCC00;
+  }
+
+/* normaal: */
+  .btn-primary-outline  {  color: #0275D8;     border-color: #0275D8;    background-image: none;   background-color: transparent; }
+  .btn-secondary-outline { color: #CCCCCC;     border-color: #CCCCCC;    background-image: none;   background-color: transparent; }
+  .btn-success-outline  {  color: #5CB85C;     border-color: #5CB85C;    background-image: none;   background-color: transparent; }
+  .btn-warning-outline {   color: #F0AD4E;     border-color: #F0AD4E;    background-image: none;   background-color: transparent; }
+  .btn-danger-outline  {   color: #D9534F;     border-color: #D9534F;    background-image: none;   background-color: transparent; }
+
+/* hover: */
+  .btn-primary-outline:hover  {  color: #FFF;     border-color: #0275D8;    background-color: #0275D8; }
+  .btn-secondary-outline:hover { color: #FFF;     border-color: #CCCCCC;    background-color: #CCCCCC; }
+  .btn-success-outline:hover  {  color: #FFF;     border-color: #5CB85C;    background-color: #5CB85C; }
+  .btn-warning-outline:hover {   color: #FFF;     border-color: #F0AD4E;    background-color: #F0AD4E; }
+  .btn-danger-outline:hover  {   color: #FFF;     border-color: #D9534F;    background-color: #D9534F; }
