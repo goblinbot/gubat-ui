@@ -39,7 +39,7 @@ io.on('connection', function (socket) {
 
   /*status*/
   socket.on('statuspage', function(msg){
-    connection.query('SELECT `name`,`rank`,`orders`,`backup`,`status` FROM agents WHERE `status` != "deceased" AND `status` != "MIA" AND `status` != "inactive" ORDER BY `agent_id` ASC', function(err, rows, fields) {
+    connection.query('SELECT `agent_id`,`name`,`rank`,`orders`,`backup`,`status` FROM agents WHERE `status` != "deceased" AND `status` != "MIA" AND `status` != "inactive" ORDER BY `agent_id` ASC', function(err, rows, fields) {
       if (!err) {
         socket.emit('statuspage', rows);
       } else {

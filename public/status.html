@@ -74,7 +74,7 @@ $(document).ready(function(){
       /* NAME - RANK - STATUS - BACKUP - ORDERS */
 
       statusResults = statusResults + (
-        '<div data-agentid="'++'" class="statusBlock col-xs-12 col-sm-6 col-md-6 col-lg-4">'
+        '<div data-agentid="'+ rows[i].agent_id +'" class="statusBlock col-xs-12 col-sm-6 col-md-6 col-lg-4">'
         + '<div class="block borders b'+ randDelay +'">'
           + '<h3 class="bordered">' + rows[i].name + '</h3>'
           + '<p>Rank: ' + rows[i].rank + '</p>'
