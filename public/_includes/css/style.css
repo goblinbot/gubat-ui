@@ -434,6 +434,14 @@ video#bgvid {
     transform         : translateX(-50%) translateY(-50%);
     background-size   : cover;
 }
+/* MAP TILES */
+.mapTile {
+  padding     : 1px 1px 1px 1px;
+  border      : 1px solid #222;
+  transition  : 0.4s;
+}
+
+
 
 
 /* BTN's custom */
@@ -457,7 +465,7 @@ video#bgvid {
   }
   .btn-gubat-alt:hover, .btn-gubat-alt:hover .glyphicon {
     /*color           : #FFFFFF;*/
-    color           : #222222;    
+    color           : #222222;
     border-color    : #FFCC00;
     background-color: #FFCC00;
   }

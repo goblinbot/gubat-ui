@@ -26,7 +26,7 @@
       <div class="hidden-xs hidden-sm hidden-md col-lg-3">&nbsp;</div>
 
       <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
-        <span class="console" style="font-size:1.2rem; font-weight:bold;">CONNECTIONS [<span class="Ye"> 3 </span>]</span>
+        <span class="console" style="font-size:1.2rem; font-weight:bold;">CONNECTIONS [<span class="Ye">&nbsp;3&nbsp;</span>]</span>
       </div>
 
       <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
@@ -38,17 +38,66 @@
       </div>
 
     </div>
-    <div class="row">
+    <div class="row b2">
 
-      <div class="col-xs-12 col-sm-12 col-md-4">
+      <div class="col-xs-12 col-sm-12 col-md-4 b2">
         droons
       </div>
 
-      <div class="col-xs-12 col-sm-12 col-md-8">
-        map in lagen
+      <div class="col-xs-12 col-sm-12 col-md-8 b3">
+        <div id="mapLarge" class="hidden-xs hidden-sm"></div>
+
+        <div id="mapSmall" class="hidden-md hidden-lg"></div>
       </div>
 
 
 
     </div>
   </div>
+<script>
+var mapSrc    = "/_images/map/";
+var tileFile  = 0;
+var onlyOnce  = 0;
+$('document').ready(function(){
+
+  if (onlyOnce == 0) {
+    onlyOnce++;
+
+    /* grote editie */
+    var mapTiles  = "";
+    for (var i = 0; i < 36; i++){
+
+      tileFile = (i+1);
+        if(tileFile < 10) {
+          tileFile = '00'+tileFile;
+        } else {
+          tileFile = '0'+tileFile;
+        }
+
+      mapTiles = mapTiles+("<div class='mapWrapper mapWrap"+(i+1)+"'><div class='col-md-2 mapTile'><img class='img-responsive' src='"+mapSrc+"6/image_part_"+tileFile+".jpg'></div></div>");
+
+    }
+    $('#mapLarge').html(mapTiles);
+
+    /* kleine editie */
+    var mapTiles  = "";
+    for (var i = 0; i < 9; i++){
+
+      tileFile = (i+1);
+        if(tileFile < 10) {
+          tileFile = '00'+tileFile;
+        } else {
+          tileFile = '0'+tileFile;
+        }
+
+      mapTiles = mapTiles+("<div class='col-xs-4 mapTile'><img class='img-responsive' src='"+mapSrc+"3/3x3_"+tileFile+".jpg'></div>");
+
+    }
+    $('#mapSmall').html(mapTiles);
+
+
+  } /*check onlyOnce*/
+
+
+});
+</script>
