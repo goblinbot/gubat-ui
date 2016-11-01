@@ -44,10 +44,11 @@ body {
   background  : url("/_images/citadel_85.jpg");
 }
 
-
 h3.bordered {
   border-bottom: 1px solid #333;
 }
+
+.m15    {margin:15px 0 0 0;}
 
 .Ye     {color:#FFCC00;}
 .Cy     {color:#00EEEE;}

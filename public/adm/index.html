@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>PocketMAATI</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport" />
+
+    <link rel="stylesheet" type="text/css" href="/_includes/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/_includes/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/_includes/css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+    
+    <div class="container borders" style="padding-top: 15px; padding-bottom: 15px;">
+
+      <div class="row">
+          <a class="btn btn-gubat m15" onclick="colorToggle();"><span class="glyphicon glyphicon-cog"></span><br/>TOGGLE</a>&nbsp;
+          <a class="btn btn-gubat m15" href="/index.html"><span class="glyphicon glyphicon-home"></span><br/>HOME</a>&nbsp;
+          <a class="btn btn-gubat m15" href="index.html"><span class="glyphicon glyphicon-refresh"></span><br/>REFRESH</a>&nbsp;
+          <a class="btn btn-gubat m15" href="/adm/remote.html"><span class="glyphicon glyphicon-expand"></span><br/>REMOTE</a>
+      </div>
+
+      <br/>
+
+      <div class="bar row">
+          <div class="col-xs-6 text-left pZero">Himawari <span class="Ye">V</span><span class="Cy">04.51</span></div>
+          <div class="col-xs-6 text-right pZero">biOS | 0451</div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+          <h1 class="error text-center console">Login.</h1>
+        </div>
+
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+          <div id="admKeypad">
+
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <!-- eint -->
+    <script type="text/javascript" src="/_includes/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/_includes/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/_includes/js/functions.js"></script>
+  </body>
+</html>
