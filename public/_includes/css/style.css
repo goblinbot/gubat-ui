@@ -381,6 +381,9 @@ p.console, .console {
   min-height   : 222px;
   padding      : 3px;
 }
+.statusBlock h3 {
+  font-size: 18px;
+}
   .statusBlock .block {
     padding    : 4px;
     min-height : 214px;
@@ -395,7 +398,27 @@ p.console, .console {
     table.statustable     { padding-bottom  : 16px; }
     .statustable.table td, .statustable.table tr  { border: 0!important; padding: 2px 2px 2px 5px; font-size: 0.9rem; }
 
+/*scoreboard*/
+.agentBarCont {
+  padding     : 12px;
+  background  : rgba(111,192,186, 0.25);
+  border      : 1px solid #6FC0BA;
+  transition  : 0.2s;
+  cursor      : pointer;
+}
+  .agentBarCont:hover {
+    box-shadow  : inset 0 0 0 2px #aaa;
+  }
+a.agentBar {
+  text-align  : center;
+  color       : #FFF;
+  padding     : 12px;
+  margin      : 0;
 
+}
+a.agentBar {
+  width       : 100%;
+}
 
 /* 404 en spaceships */
 

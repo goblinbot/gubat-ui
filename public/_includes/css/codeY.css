@@ -13,9 +13,18 @@
 .imgfolder {
     background  : url("/_images/folder_default_Y.png");
 }
+.smallfolder, .smallfolder:hover {
+    background-size: 166px 130px;
+    background-position: center;
+}
 .imgfolder:hover {
     cursor      : pointer;
     background  : url("/_images/folder_selected_Y.png");
+}
+
+.agentBarCont {
+  background-color: rgba(255, 204, 0, 0.15);
+  border: 1px solid #FFCC00;
 }
 
 #orbit h1::before {

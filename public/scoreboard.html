@@ -1,3 +1,27 @@
+<script>
+
+  // scoreTypes houdt bij hoe veel er gelooped moet worden want Javascript Nee, Php ja
+  var scoreTypes = 12;
+
+  var score0 = ['range_kills','Top Gunner','Ranged kills'];
+    var score1 = ['melee_kills','Huge Guts','Melee kils'];
+    var score2 = ['misc_kills','Always prepared','Misc. Kills'];
+    var score3 = ['non_lethals','Professional','Non-lethal takedowns'];
+
+  var score4 = ['blood_donated','Reverse-Vampire','Liters of blood donated'];
+    var score5 = ['duels_won','Master Duelist','Duel victories'];
+    var score6 = ['accidents','Accursed','Serious accidents'];
+    var score7 = ['medbay_visits','Cheated Death','Emergency surgeries had'];
+
+  var score8 = ['angry_nobles','Somehow Alive','Times yelled at by nobles'];
+    var score9 = ['bad_choices','Tactical Genius','Really bad decisions made'];
+    var score10 = ['expl_taken','Firefly','Times caught in explosions'];
+    var score11 = ['pol_inc','Rebellious Nature','Political incidents involved in'];
+
+  // console.log(score0[1]);
+  // console.log(score0);
+
+</script>
 
 <div id="loading" class="hidden-xs hidden-sm">
   <img src="_images/loops/crypto.gif"/>
@@ -25,18 +49,42 @@
   </div>
 
   <div class="row b3">
+    <h4><span class="glyphicon glyphicon-user"></span>&nbsp;INDIVIDUALS</h4>
+        <div id="userSelect"></div>
+      <br/>
 
-
-
-
-
-
-
+    <h4><span class="glyphicon glyphicon-stats"></span>&nbsp;CURRENT TOP SCORES</h4>
+      <br/>
+        <div id="leaderboards"></div>
+      <br/>
   </div>
 
 </div>
+
 <!-- einde pagina scripts -->
 <script>
 
+$(document).ready(function(){
+
+  socket.emit('statuspage'), 'true';
+  socket.on('statuspage', function(rows){
+    var statusResults = "<div class='row'>";
+
+      for (var i = 0; i < rows.length; i++){
+        statusResults = statusResults + "<div class='agentBarCont col-xs-6 col-sm-6 col-md-4'>";
+        statusResults = statusResults + "<a class='agentBar b4' onclick='showAgent("+rows[i].agent_id+")'>"+rows[i].name+"</a>";
+        statusResults = statusResults + "</div>";
+      }
+
+    var statusResults = statusResults + "</div>";
+    $('#userSelect').html(statusResults);
+  });
+
+
+});
+
+function showAgent(agent){
+  console.log(agent);
+}
 
 </script>
