@@ -6,7 +6,7 @@
   <img src="_images/loops/signal.gif"/>
 </div>
 
-<div class="row2">
+<div class="row2 b2">
     <div class="seperate-1">&nbsp;</div>
     <div class="bar">
       HIMAWARI\DATA ... <span class="Cy">SCAN $root-</span><span class="Ye">&MAATI_local&</span><span class="Cy">\LAZARUS_INVESTMENTS\MA4..\*</span>
@@ -15,49 +15,100 @@
 
     <h3 id="loadtext" style="margin-left: 16px;">LOADING... <span class="Ye">COMPLETE</span>. PLEASE SELECT DATA STREAM.</h3>
 
-    <div id="grid" class="row mZero pZero">
+    <!-- <div id="grid" class="row mZero pZero"> -->
+    <div class="row mZero pZero">
+
 
       <!-- BOX1 -->
-      <div class="item col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 s1">
+      <!-- <div class="item col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 s1">
           <div class="imgfolder" onclick="navigate('status')">
               <p><span><span class="glyphicon glyphicon-user"></span>&nbsp;PERSONNEL/STATUS SCREEN</span></p>
           </div>
-      </div>
+      </div> -->
 
       <!-- BOX2 -->
-      <div class="item col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 s2">
+      <!-- <div class="item col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 s2">
           <div class="imgfolder" onclick="navigate('bulletin')">
               <p><span><span class="glyphicon glyphicon-pushpin"></span> CORP BULLETIN</span></p>
           </div>
-      </div>
+      </div> -->
 
       <!-- BOX3 -->
-      <div class="item col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 s2">
+      <!-- <div class="item col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 s2">
           <div class="imgfolder" onclick="navigate('scoreboard')">
               <p><span><span class="glyphicon glyphicon-stats"></span> SCOREBOARD</span></p>
           </div>
-      </div>
+      </div> -->
 
       <!-- BOX4 -->
-      <div class="item col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 s2">
+      <!-- <div class="item col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 s2">
           <div class="imgfolder" onclick="navigate('schedule')">
               <p><span><span class="glyphicon glyphicon-time"></span> SCHEDULE</span></p>
           </div>
-      </div>
+      </div> -->
 
       <!-- BOX5 -->
-      <div class="item col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 s3">
+      <!-- <div class="item col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 s3">
           <div class="imgfolder" onclick="navigate('citadel')">
               <p><span><span class="glyphicon glyphicon-screenshot"></span> CITADEL_ARRAY</span></p>
           </div>
-      </div>
+      </div> -->
 
       <!-- BOX6 -->
-      <div class="item col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 s3">
+      <!-- <div class="item col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 s3">
           <div class="imgfolder" onclick="navigate('default')">
               <p class="Gy"><span><span class="glyphicon glyphicon-compressed"></span> $\\:userfiles\*</span></p>
           </div>
-      </div>
+      </div> -->
+
+      <ul id="hexGrid">
+
+        <li class="hex">
+            <a class="hexIn" onclick="navigate('status')">
+              <img src="_images/hex_blank.png" alt="" />
+              <p><i class="glyphicon glyphicon-user"></i>&nbsp;PERSONNEL / STATUS SCREEN</p>
+            </a>
+        </li>
+        <li class="hex">
+            <a class="hexIn" onclick="navigate('bulletin')">>
+              <img src="_images/hex_blank.png" alt="" />
+                  <p><i class="glyphicon glyphicon-pushpin"></i>&nbsp;CORP BULLETIN</p>
+            </a>
+        </li>
+        <li class="hex">
+            <a class="hexIn" onclick="navigate('scoreboard')">
+              <img src="_images/hex_blank.png" alt="" />
+                <p><i class="glyphicon glyphicon-stats"></i>&nbsp;SCOREBOARD</p>
+            </a>
+        </li>
+
+        <li class="hex"></li>
+
+        <li class="hex">
+            <a class="hexIn" onclick="navigate('schedule')">
+              <img src="_images/hex_blank.png" alt="" />
+                <p><i class="glyphicon glyphicon-time"></i>&nbsp;SCHEDULE</p>
+            </a>
+        </li>
+
+        <li class="hex"></li>
+        <li class="hex"></li>
+
+        <li class="hex">
+            <a class="hexIn" onclick="navigate('citadel')">
+              <img src="_images/hex_blank.png" alt="" />
+                <p><i class="glyphicon glyphicon-screenshot"></i>&nbsp;CITADEL_ARRAY</p>
+            </a>
+        </li>
+        <li class="hex">
+            <a class="hexIn" onclick="navigate('userfiles')">
+              <img src="_images/hex_blank.png" alt="" />
+                <p class="Gy"><i class="Gy glyphicon glyphicon-compressed"></i>&nbsp;$\\:userfiles\*</p>
+            </a>
+        </li>
+      </ul>
+
+
 
     </div>
 
@@ -66,54 +117,4 @@
 
 
 <!-- ROW2 -->
-</div>
-
-<div class="row2">
-  <ul id="hexGrid">
-
-    <li class="hex">
-        <a class="hexIn" onclick="navigate('status')">
-          <img src="_images/hex_blank.png" alt="" />
-          <p><i class="glyphicon glyphicon-user"></i>&nbsp;PERSONNEL / STATUS SCREEN</p>
-        </a>
-    </li>
-    <li class="hex">
-        <a class="hexIn" onclick="navigate('bulletin')">>
-          <img src="_images/hex_blank.png" alt="" />
-              <p><i class="glyphicon glyphicon-pushpin"></i>&nbsp;CORP BULLETIN</p>
-        </a>
-    </li>
-    <li class="hex">
-        <a class="hexIn" onclick="navigate('scoreboard')">
-          <img src="_images/hex_blank.png" alt="" />
-            <p><i class="glyphicon glyphicon-stats"></i>&nbsp;SCOREBOARD</p>
-        </a>
-    </li>
-
-    <li class="hex"></li>
-
-    <li class="hex">
-        <a class="hexIn" onclick="navigate('schedule')">
-          <img src="_images/hex_blank.png" alt="" />
-            <p><i class="glyphicon glyphicon-time"></i>&nbsp;SCHEDULE</p>
-        </a>
-    </li>
-
-    <li class="hex"></li>
-    <li class="hex"></li>
-
-    <li class="hex">
-        <a class="hexIn" onclick="navigate('citadel')">
-          <img src="_images/hex_blank.png" alt="" />
-            <p><i class="glyphicon glyphicon-screenshot"></i>&nbsp;CITADEL_ARRAY</p>
-        </a>
-    </li>
-    <li class="hex">
-        <a class="hexIn" onclick="navigate('userfiles')">
-          <img src="_images/hex_blank.png" alt="" />
-            <p class="Gy"><i class="Gy glyphicon glyphicon-compressed"></i>&nbsp;$\\:userfiles\*</p>
-        </a>
-    </li>
-  </ul>
-
 </div>
