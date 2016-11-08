@@ -3,7 +3,8 @@
     width: 90%;
     margin: 0 auto;
     padding:0.866% 0;
-    font-family: 'Raleway', sans-serif;
+    font-family: arial;
+    font-weight: bold;
     font-size: 15px;
 }
 #hexGrid:after {
@@ -53,10 +54,10 @@
   visibility: hidden;
 }
 .hex p {
-    width: 102%;
-    left:-1%; /* prevent line on the right where background doesn't cover image */
+    width: 100%;
+    left:0;
     padding: 5%;
-    font-weight: 300;
+    font-weight: 600;
     top: 40%;
 }
 
@@ -64,7 +65,7 @@
   position: relative;
 }
 
-.hexIn:hover .hex p, .hexIn:hover .hex {
+.hex:hover, .hex:hover p, .hex p:hover, .hex:hover .glyphicon {
   color: #000;
 }
 
