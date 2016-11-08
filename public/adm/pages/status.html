@@ -49,6 +49,7 @@
 var admAUTH = getCookie('auth');
 var admUSER = getCookie('user');
 var onlyOnce = 0;
+var submitOnce = 0;
 
   $(document).ready(function() {
 
@@ -83,14 +84,20 @@ var onlyOnce = 0;
 
     $('#updateOrders').submit(function(e) {
       e.preventDefault();
-      var onlyOnce  = 0;
-      var uid       = $('#uID').attr('value');
-      var uorders   = $('#uORDERS').val();
-      var ustatus   = $('#uSTATUS').val();
+      if (submitOnce == 0) {
+        submitOnce = (submitOnce+1);
 
-      $('.statusText').html('Orders updated. Good luck.');
-        socket.emit('updateORD', uid, uorders, ustatus);
-          navigateADM('status');
+        var uid       = $('#uID').attr('value');
+        var uorders   = $('#uORDERS').val();
+        var ustatus   = $('#uSTATUS').val();
+
+        $('.statusText').html('Orders updated. Good luck.');
+          socket.emit('updateORD', uid, uorders, ustatus);
+            navigateADM('status');
+
+      } else {
+        return false;
+      }
     });
 
   });

@@ -78,9 +78,9 @@ $(document).ready(function(){
         + '<div class="block borders b'+ randDelay +'">'
           + '<h3 class="bordered">' + rows[i].name + '</h3>'
           + '<p>Rank: ' + rows[i].rank + '</p>'
-            + '<table class="table statustable">'
-              + '<tr> <td>STATUS</td> <td> <span class="' + rows[i].status + '">' + rows[i].status + '</span> </td> </tr>'
-              + '<tr> <td>CUR. ORDERS</td> <td>' + rows[i].orders + '</td></tr>'
+            + '<table class="table statustable" id="'+ rows[i].agent_id +'" >'
+              + '<tr> <td>STATUS</td> <td class="tdstatus"> <span class="' + rows[i].status + '">' + rows[i].status + '</span> </td> </tr>'
+              + '<tr> <td>CUR. ORDERS</td> <td class="tdorders">' + rows[i].orders + '</td></tr>'
               + '<tr> <td>LAST BACKUP</td> <td>' + rows[i].backup + '</td></tr>'
             + '</table>'
           + '</div>'
@@ -181,6 +181,14 @@ $(document).ready(function(){
 
   });
 
+  socket.on('realtimeUpdate', function(rows) {
+    console.log(rows[0]);
+    var updateThis = $('table#'+rows[0].agent_id+'');
+      $(updateThis+' td.tdstatus').empty();
+        $(updateThis+' td.tdstatus').html(' <span class="' + rows[0].status + '">' + rows[0].status + '</span> ');
+      $(updateThis+' td.tdorders').empty();
+        $(updateThis+' td.tdorders').html('' + rows[0].orders + '');
+  });
 });
 </script>
 </div>

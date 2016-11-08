@@ -97,16 +97,36 @@ io.on('connection', function (socket) {
   });
 
   socket.on('updateORD', function(uid, uorders, ustatus){
-    console.log(uid + ' - ' + uorders);
+
     connection.query('UPDATE agents SET `orders` = "'+uorders+'", `status` = "'+ustatus+'" WHERE `agent_id` = "'+uid+'"', function(err, rows, fields) {
       console.log('status updated for agent '+uid);
     });
 
+    connection.query('SELECT `agent_id`,`name`,`rank`,`orders`,`backup`,`status` FROM agents WHERE `agent_id` = "'+uid+'" LIMIT 1 ', function(err, rows, fields) {
+      if (!err) {
+        console.log(rows);
+        io.emit('realtimeUpdate', rows);
+      } else {
+        console.log('Error while selecting updated global status..');
+      }
+    });
+
   });
+
+  // io.on('globalStatusUpdate', function(uid) {
+    // connection.query('SELECT `agent_id`,`name`,`rank`,`orders`,`backup`,`status` FROM agents WHERE `agent_id` = "'+uid+'" LIMIT 1 ', function(err, rows, fields) {
+    //   if (!err) {
+    //     console.log(rows);
+    //     io.emit('realtimeUpdate', rows);
+    //   } else {
+    //     console.log('Error while selecting updated global status..');
+    //   }
+    // });
+  // });
 
   socket.on('disconnect', function(){
     countClients = (countClients-1);
-    console.log('User attempting exit. Deploying whiteCell()..  '+countClients+' active clients.');
+    console.log(countClients+' active clients.');
   });
 
 });
