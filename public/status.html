@@ -184,10 +184,15 @@ $(document).ready(function(){
   socket.on('realtimeUpdate', function(rows) {
     console.log(rows[0]);
     var updateThis = $('table#'+rows[0].agent_id+'');
-      $(updateThis+' td.tdstatus').empty();
-        $(updateThis+' td.tdstatus').html(' <span class="' + rows[0].status + '">' + rows[0].status + '</span> ');
-      $(updateThis+' td.tdorders').empty();
-        $(updateThis+' td.tdorders').html('' + rows[0].orders + '');
+
+      // var orderTD = ($(updateThis).find('td.tdorders'));
+      // console.log(orderTD);
+
+      // $(updateThis+' td.tdstatus').empty();
+      $(updateThis).find('td.tdstatus').empty();
+        $(updateThis).find('td.tdstatus').html(' <span class="' + rows[0].status + '">' + rows[0].status + '</span> ');
+      $(updateThis).find('td.tdorders').empty();
+        $(updateThis).find('td.tdorders').html('' + rows[0].orders + '');
   });
 });
 </script>

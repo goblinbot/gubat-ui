@@ -2,23 +2,18 @@
 
   <div class="row" name="status" style="font-size: 1.3rem;">
     <br/>
-    <h2 class="statusText">&nbsp;</h2>
-    <br/>
 
-    <div class="col-xs-5">STATUS </div>
-    <div class="col-xs-1">:</div>
+    <div class="col-xs-6">STATUS </div>
     <div id="cSTATUS" class="col-xs-6">&nbsp;</div>
 
     <br/><br/>
 
-    <div class="col-xs-5">CURRENT ORDERS </div>
-    <div class="col-xs-1">:</div>
+    <div class="col-xs-6">CURRENT ORDERS </div>
     <div id="cORDERS" class="col-xs-6">&nbsp;</div>
 
     <br/><br/>
 
-    <div class="col-xs-5">LAST BACKUP </div>
-    <div class="col-xs-1">:</div>
+    <div class="col-xs-6">LAST BACKUP </div>
     <div id="cBACKUP" class="col-xs-6">&nbsp;</div>
   </div>
   <hr style="border-color:#222;"/>
@@ -90,10 +85,8 @@ var submitOnce = 0;
         var uid       = $('#uID').attr('value');
         var uorders   = $('#uORDERS').val();
         var ustatus   = $('#uSTATUS').val();
-
-        $('.statusText').html('Orders updated. Good luck.');
-          socket.emit('updateORD', uid, uorders, ustatus);
-            navigateADM('status');
+        socket.emit('updateORD', uid, uorders, ustatus);
+          navigateADM('status');
 
       } else {
         return false;
