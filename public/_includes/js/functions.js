@@ -6,9 +6,13 @@ var selector    = "";
 function colorToggle(){
   if (CoCyan == 0) {
       $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', '/_includes/css/codeY.css') );
+      $('.hexIn img').empty();
+      $('.hexIn img').attr('src', '/_images/hex_blank_Y.png');
       CoCyan = 1;
   } else {
       $('link[rel=stylesheet][href~="/_includes/css/codeY.css"]').remove();
+      $('.hexIn img').empty();
+      $('.hexIn img').attr('src', '/_images/hex_blank.png');
       CoCyan = 0;
   }
 }

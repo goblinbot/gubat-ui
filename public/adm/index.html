@@ -12,14 +12,14 @@
   </head>
 
   <body>
-    
+
     <div class="container borders" style="padding-top: 15px; padding-bottom: 15px;">
 
       <div class="row">
-          <a class="btn btn-gubat m15" onclick="colorToggle();"><span class="glyphicon glyphicon-cog"></span><br/>TOGGLE</a>&nbsp;
-          <a class="btn btn-gubat m15" href="/index.html"><span class="glyphicon glyphicon-home"></span><br/>HOME</a>&nbsp;
-          <a class="btn btn-gubat m15" href="index.html"><span class="glyphicon glyphicon-refresh"></span><br/>REFRESH</a>&nbsp;
-          <a class="btn btn-gubat m15" href="/adm/remote.html"><span class="glyphicon glyphicon-expand"></span><br/>REMOTE</a>
+          <a class="btn btn-gubat" onclick="colorToggle();"><span class="glyphicon glyphicon-cog"></span><br/>TOGGLE</a>&nbsp;
+          <a class="btn btn-gubat" href="/index.html"><span class="glyphicon glyphicon-home"></span><br/>HOME</a>&nbsp;
+          <a class="btn btn-gubat" href="index.html"><span class="glyphicon glyphicon-refresh"></span><br/>REFRESH</a>&nbsp;
+          <a class="btn btn-gubat disabled" href="/adm/remote.html"><span class="glyphicon glyphicon-expand"></span><br/>REMOTE</a>
       </div>
 
       <br/>
@@ -29,26 +29,121 @@
           <div class="col-xs-6 text-right pZero">biOS | 0451</div>
       </div>
 
-      <div class="row">
+      <div class="row" id="main-adm">
+
+
+
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
           <h1 class="error text-center console">Login.</h1>
         </div>
 
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-          <div id="admKeypad">
+          <div id="admkeypad" class="noselect">
 
-          </div>
+            <div class="row keypad-row col-xs-12">
+              <form id="keypad_login">
+                  <textarea id="writekeys" name="submitKeycode" rows="1" cols="6" maximum="5" readonly="readonly" class="noselect text-center form-control"></textarea>
+              </form>
+            </div>
+
+            <div class="row keypad-row">
+              <div class="btn btn-gubat btn-lg col-xs-4">1</div>
+              <div class="btn btn-gubat btn-lg col-xs-4">2</div>
+              <div class="btn btn-gubat btn-lg col-xs-4">3</div>
+            </div>
+
+            <div class="row keypad-row">
+              <div class="btn btn-gubat btn-lg col-xs-4">4</div>
+              <div class="btn btn-gubat btn-lg col-xs-4">5</div>
+              <div class="btn btn-gubat btn-lg col-xs-4">6</div>
+            </div>
+
+            <div class="row keypad-row">
+              <div class="btn btn-gubat btn-lg col-xs-4">7</div>
+              <div class="btn btn-gubat btn-lg col-xs-4">8</div>
+              <div class="btn btn-gubat btn-lg col-xs-4">9</div>
+            </div>
+
+            <div class="row keypad-row">
+              <div class="btn btn-gubat btn-lg delete col-xs-4"><i class="glyphicon glyphicon-refresh"></i></div>
+              <div class="btn btn-gubat btn-lg col-xs-4">0</div>
+              <div class="btn btn-gubat btn-lg submit col-xs-4"><i class="glyphicon glyphicon-ok"></i></div>
+            </div>
+
         </div>
 
       </div>
 
 
     </div>
+  </div>
 
-    <!-- eint -->
-    <script type="text/javascript" src="/_includes/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/_includes/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-    <script type="text/javascript" src="/_includes/js/functions.js"></script>
+  <!-- eint -->
+  <script type="text/javascript" src="/_includes/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/_includes/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="/_includes/js/functions.js"></script>
+
+  <script>
+    var KeysPressed = 0;
+    var attempts    = 0;
+
+    /*KEYPAD*/
+    $('#admkeypad .btn-gubat').click(function(){
+      var $write = $('#writekeys');
+
+      var $this = $(this), character = $this.text();
+
+      if($this.hasClass('delete')) {
+          var html = $write.html();
+
+          $write.html(html.substr(0, html.length - 5));
+          $('.error').html("Clear.");
+          KeysPressed = 0;
+          return false;
+      }
+      if($this.hasClass('submit')) {
+          if (KeysPressed < 5) {
+             $('.error').html("Insufficient amount of characters.");
+          } else if (KeysPressed == 5) {
+            $('#keypad_login').submit();
+          } else {
+              $('.error').html("Something went horribly wrong.");
+          }
+
+      } else {
+        if (KeysPressed < 5) {
+            /* voeg tekens toe aan blok */
+            $write.html($write.html() + character);
+            KeysPressed++;
+        } else if (KeysPressed >= 5) {
+            $('.error').html("Max characters reached.");
+        } else {
+            $('.error').html("Something went horribly wrong.");
+        }
+      }
+    });
+
+    $("#keypad_login").submit(function(e) {
+        e.preventDefault();
+        var keycode = $('#writekeys').html();
+        console.log(keycode);
+
+        socket.emit('auth', keycode);
+
+
+    });
+
+    socket.on('authFalse', function(){
+      attempts++;
+      $('.error').html("Incorrect pin entered. Strike "+attempts+".");
+
+      if(attempts > 3) {
+        location.href = '/adm/noMeat.html';
+      }
+    });
+
+  </script>
+
   </body>
 </html>

@@ -466,8 +466,6 @@ video#bgvid {
 }
 
 
-
-
 /* BTN's custom */
   .btn-gubat, .btn-gubat .glyphicon {
     color           : #00EEEE;
@@ -507,3 +505,37 @@ video#bgvid {
   .btn-success-outline:hover  {  color: #FFF;     border-color: #5CB85C;    background-color: #5CB85C; }
   .btn-warning-outline:hover {   color: #FFF;     border-color: #F0AD4E;    background-color: #F0AD4E; }
   .btn-danger-outline:hover  {   color: #FFF;     border-color: #D9534F;    background-color: #D9534F; }
+
+
+
+  /* ADM */
+  .keypad-row .btn.btn-gubat {
+    padding-top:30px;
+    padding-bottom:30px;
+    font-size: 3rem;
+    border-radius: 0;
+  }
+  .keypad-row #writekeys {
+    background      : #CCC;
+    color           : #222;
+    font-size       : 32px;
+    font-size       : 2rem;
+    padding         : 4px;
+    max-width       : 100%;
+    border-radius   : 5px;
+    margin-bottom   : 2rem;
+  }
+  @media(max-width:769px) {
+    .keypad-row .btn.btn-gubat {
+      padding-top:26px;
+      padding-bottom:26px;
+      font-size: 2rem;
+    }
+  }
+  @media(min-width:1201px) {
+    .keypad-row .btn.btn-gubat {
+      padding-top:52px;
+      padding-bottom:52px;
+      font-size: 3rem;
+    }
+  }
