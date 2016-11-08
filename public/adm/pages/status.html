@@ -2,6 +2,8 @@
 
   <div class="row" name="status" style="font-size: 1.3rem;">
     <br/>
+    <h2 class="statusText">&nbsp;</h2>
+    <br/>
 
     <div class="col-xs-5">STATUS </div>
     <div class="col-xs-1">:</div>
@@ -21,27 +23,25 @@
   </div>
   <hr style="border-color:#222;"/>
 
-  <div class="row" name="ordertekst">
-    <form id="updateOrders">
-      <div>
-        <input type="text" class="form-control" maxlength="19" name="uORDERS" id="uORDERS" value="">
+  <form id="updateOrders">
+    <div class="row" name="ordertekst">
+
+      <input type="text" class="form-control" maxlength="19" name="uORDERS" id="uORDERS" value="" style="height:48px;font-size:30px;"></input>
+      <input type="hidden" name="uID" id="uID" class="hidden" value=""/>
         <br/>
-        <input class="btn btn-primary btn-block" name="SAVE" type="submit">
-        <input type="hidden" name="uID" id="uID" class="hidden" value=""/>
-      </div>
-    </form>
-  </div>
-
-  <div class="row" name="statusbuttons"></div>
-    </br>
-
-
-
-
-
-
-
-  </div>
+          <select id="uSTATUS" class="form-control" style="height:48px;font-size:24px;">
+            <option value="online">online </option>
+            <option value="offline">offline </option>
+            <option value="critical">critical </option>
+            <option value="offworld">offworld </option>
+            <option value="unknown">unknown </option>
+            <option value="hosting">hosting </option>
+          </select>
+        <br/>
+        <br/>
+      <input class="btn btn-primary btn-lg btn-block" name="SAVE" value="SAVE" type="submit"/>
+    </div>
+  </form>
   <div name="seperator">&nbsp;<br/><br/></div>
 
 
@@ -70,19 +70,27 @@ var onlyOnce = 0;
           $('#uORDERS').attr('value',rows[0].orders);
           $('#uID').attr('value',rows[0].agent_id);
           $('#cSTATUS').html('<span class="'+rows[0].status+'" style="font-size:1.3rem;">'+rows[0].status+'</span>');
+          $('#uSTATUS option[value='+rows[0].status+']').prop("selected", "selected");
           $('#cORDERS').html(rows[0].orders);
           $('#cBACKUP').html(rows[0].backup);
       }
     });
 
+    $('label').click(function(){
+
+      $(this).addClass('active');
+    });
+
     $('#updateOrders').submit(function(e) {
       e.preventDefault();
-      var onlyOnce = 0;
-      var uid = $('#uID').attr('value');
-      var ustatus = $('#uORDERS').html();
+      var onlyOnce  = 0;
+      var uid       = $('#uID').attr('value');
+      var uorders   = $('#uORDERS').val();
+      var ustatus   = $('#uSTATUS').val();
 
-      console.log(ustatus);
-      // socket.emit('auth', keycode, );
+      $('.statusText').html('Orders updated. Good luck.');
+        socket.emit('updateORD', uid, uorders, ustatus);
+          navigateADM('status');
     });
 
   });

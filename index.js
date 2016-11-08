@@ -94,28 +94,21 @@ io.on('connection', function (socket) {
         socket.emit('authFalse', rows);
       }
     });
-    /*
-    SELECT name, agent_pin, status, orders, backup
-                FROM agents
-                WHERE agent_pin LIKE '".$submitKeycode."'
-                    AND status NOT LIKE 'inactive'
-                    AND status NOT LIKE 'MIA'
-                    AND status NOT LIKE 'DECEASED'
-                LIMIT 1
-    */
   });
 
+  socket.on('updateORD', function(uid, uorders, ustatus){
+    console.log(uid + ' - ' + uorders);
+    connection.query('UPDATE agents SET `orders` = "'+uorders+'", `status` = "'+ustatus+'" WHERE `agent_id` = "'+uid+'"', function(err, rows, fields) {
+      console.log('status updated for agent '+uid);
+    });
+
+  });
 
   socket.on('disconnect', function(){
     countClients = (countClients-1);
     console.log('User attempting exit. Deploying whiteCell()..  '+countClients+' active clients.');
   });
 
-});
-
-/*test*/
-app.post('/authenticate', function(req, res) {
-  res.send('You sent the name "' + req.name + '".');
 });
 
 app.use(function(req, res, next) {
