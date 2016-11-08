@@ -1,1 +1,89 @@
-STATUS
+<div class="row">
+
+  <div class="row" name="status" style="font-size: 1.3rem;">
+    <br/>
+
+    <div class="col-xs-5">STATUS </div>
+    <div class="col-xs-1">:</div>
+    <div id="cSTATUS" class="col-xs-6">&nbsp;</div>
+
+    <br/><br/>
+
+    <div class="col-xs-5">CURRENT ORDERS </div>
+    <div class="col-xs-1">:</div>
+    <div id="cORDERS" class="col-xs-6">&nbsp;</div>
+
+    <br/><br/>
+
+    <div class="col-xs-5">LAST BACKUP </div>
+    <div class="col-xs-1">:</div>
+    <div id="cBACKUP" class="col-xs-6">&nbsp;</div>
+  </div>
+  <hr style="border-color:#222;"/>
+
+  <div class="row" name="ordertekst">
+    <form id="updateOrders">
+      <div>
+        <input type="text" class="form-control" maxlength="19" name="uORDERS" id="uORDERS" value="">
+        <br/>
+        <input class="btn btn-primary btn-block" name="SAVE" type="submit">
+        <input type="hidden" name="uID" id="uID" class="hidden" value=""/>
+      </div>
+    </form>
+  </div>
+
+  <div class="row" name="statusbuttons"></div>
+    </br>
+
+
+
+
+
+
+
+  </div>
+  <div name="seperator">&nbsp;<br/><br/></div>
+
+
+<script>
+var admAUTH = getCookie('auth');
+var admUSER = getCookie('user');
+var onlyOnce = 0;
+
+  $(document).ready(function() {
+
+    $('.btn').removeClass('active');
+    $('#btnST').addClass('active');
+
+    if(admAUTH == 'TRUE' && admUSER.length > 0) {
+      socket.emit('admstatuspage', admUSER);
+    } else {
+      /* wegsturen */
+      location.href = '/adm/noMeat.html';
+    }
+
+    socket.on('admstatuspage', function(rows){
+      if (onlyOnce == 0) {
+        onlyOnce = (onlyOnce+1);
+
+        console.log(rows[0].agent_id);
+          $('#uORDERS').attr('value',rows[0].orders);
+          $('#uID').attr('value',rows[0].agent_id);
+          $('#cSTATUS').html('<span class="'+rows[0].status+'" style="font-size:1.3rem;">'+rows[0].status+'</span>');
+          $('#cORDERS').html(rows[0].orders);
+          $('#cBACKUP').html(rows[0].backup);
+      }
+    });
+
+    $('#updateOrders').submit(function(e) {
+      e.preventDefault();
+      var onlyOnce = 0;
+      var uid = $('#uID').attr('value');
+      var ustatus = $('#uORDERS').html();
+
+      console.log(ustatus);
+      // socket.emit('auth', keycode, );
+    });
+
+  });
+</script>

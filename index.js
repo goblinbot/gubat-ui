@@ -51,6 +51,16 @@ io.on('connection', function (socket) {
       }
     });
   });
+  /* adm status page */
+  socket.on('admstatuspage', function(admUSER){
+    connection.query('SELECT `agent_id`,`orders`,`backup`,`status` FROM agents WHERE `name` = "'+ admUSER +'" LIMIT 1', function(err, rows, fields) {
+      if (!err) {
+        socket.emit('admstatuspage', rows);
+      } else {
+        console.log('Error while performing DB Query in ADM/STATUS.');
+      }
+    });
+  });
 
   /*MIA*/
   socket.on('showRip', function(msg){
@@ -65,6 +75,9 @@ io.on('connection', function (socket) {
 
   socket.on('LOGLOGIN', function(admUSER){
     console.log('user '+admUSER+' succesfully logged in to SECTOR.ADM');
+  });
+  socket.on('LOGLOGOUT', function(admUSER){
+    console.log('user '+admUSER+' logged out manually from SECTOR.ADM');
   });
 
   socket.on('auth', function(keycode){

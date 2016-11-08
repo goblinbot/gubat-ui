@@ -1,1 +1,24 @@
 SCHEITPALEN
+
+
+
+
+
+<script>
+var admAUTH = getCookie('auth');
+var admUSER = getCookie('user');
+var onlyOnce = 0;
+
+  $(document).ready(function() {
+
+    $('.btn').removeClass('active');
+    $('#btnBTL').addClass('active');
+
+    if(admAUTH == 'TRUE' && admUSER.length > 0) {
+
+    } else {
+      /* wegsturen */
+      location.href = '/adm/noMeat.html';
+    }
+  });
+</script>

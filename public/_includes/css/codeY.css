@@ -35,7 +35,7 @@
   color           : #FFCC00;
   border-color    : #FFCC00;
 }
-.btn-gubat:hover, .btn-gubat:hover .glyphicon {
+.btn-gubat:hover, .btn-gubat:hover .glyphicon, .btn-gubat.active, .btn-gubat.active .glyphicon {
   border-color    : #FFCC00;
   background-color: #FFCC00;
 }
@@ -43,7 +43,7 @@
   color           : #00EEEE;
   border-color    : #00EEEE;
 }
-.btn-gubat-alt:hover, .btn-gubat-alt:hover .glyphicon {
+.btn-gubat-alt:hover, .btn-gubat-alt:hover .glyphicon, .btn-gubat-alt.active, .btn-gubat-alt.active .glyphicon {
   border-color    : #00EEEE;
   background-color: #00EEEE;
 }

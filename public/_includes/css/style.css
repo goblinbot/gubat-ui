@@ -490,7 +490,7 @@ img.drone {
     background-image: none;
     background-color: transparent;
   }
-  .btn-gubat:hover, .btn-gubat:hover .glyphicon {
+  .btn-gubat:hover, .btn-gubat:hover .glyphicon, .btn-gubat.active, .btn-gubat.active .glyphicon {
     /*color           : #FFFFFF;*/
     color           : #222222;
     border-color    : #00EEEE;
@@ -502,12 +502,23 @@ img.drone {
     background-image: none;
     background-color: transparent;
   }
-  .btn-gubat-alt:hover, .btn-gubat-alt:hover .glyphicon {
+  .btn-gubat-alt:hover, .btn-gubat-alt:hover .glyphicon, .btn-gubat-alt.active, .btn-gubat-alt.active .glyphicon {
     /*color           : #FFFFFF;*/
     color           : #222222;
     border-color    : #FFCC00;
     background-color: #FFCC00;
   }
+/* input-group-addon: */
+.btn-IGA {
+  color           : #FFF;
+  font-weight     : 300;
+  background-color: #0275D8;
+  border-color    : #074d8a;
+  cursor          : pointer;
+}
+.btn-IGA:hover {
+  background-color: #074d8a;
+}
 
 /* normaal: */
   .btn-primary-outline  {  color: #0275D8;     border-color: #0275D8;    background-image: none;   background-color: transparent; }
