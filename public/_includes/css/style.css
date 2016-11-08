@@ -315,7 +315,7 @@ p.console, .console {
 
 
 /* DEFAULT RIGHT */
-#grid .item {
+/*#grid .item {
     -webkit-animation   : Blox  0.4s linear forwards;
     -moz-animation      : Blox  0.4s linear forwards;
     -animation          : Blox  0.4s linear forwards;
@@ -326,7 +326,7 @@ p.console, .console {
 #grid .s1 {animation-delay: 2.0s; -moz-animation-delay: 2.0s; -webkit-animation-delay: 2.0s;}
 #grid .s2 {animation-delay: 2.2s; -moz-animation-delay: 2.2s; -webkit-animation-delay: 2.2s;}
 #grid .s3 {animation-delay: 2.4s; -moz-animation-delay: 2.4s; -webkit-animation-delay: 2.4s;}
-#grid .s4 {animation-delay: 2.6s; -moz-animation-delay: 2.6s; -webkit-animation-delay: 2.6s;}
+#grid .s4 {animation-delay: 2.6s; -moz-animation-delay: 2.6s; -webkit-animation-delay: 2.6s;}*/
 
 .imgfolder {
     box-sizing: border-box;
@@ -464,6 +464,23 @@ video#bgvid {
   border      : 1px solid #222;
   transition  : 0.4s;
 }
+  .mapSmall {
+    margin-top: 20px;
+  }
+
+img.drone {
+  width : 90px;
+  height: 90px;
+}
+  .droneblock p {
+    margin-top: 0;
+  }
+  .droneblock h4 {
+    margin-top: 6px;
+  }
+  .droneblock hr {
+    border: 1px solid #222;
+  }
 
 
 /* BTN's custom */
@@ -539,3 +556,16 @@ video#bgvid {
       font-size: 3rem;
     }
   }
+
+
+  #hexGrid .hex, #hexGrid { /* Declare animatie */
+      -webkit-animation   : FadeInLoad  0.4s linear forwards;
+      -moz-animation      : FadeInLoad  0.4s linear forwards;
+      -animation          : FadeInLoad  0.4s linear forwards;
+      visibility          : hidden;
+  }
+  /*declare volgorde 1t/m 4*/
+  /*#hexGrid .hex .s1 {animation-delay: 2.0s; -moz-animation-delay: 2.0s; -webkit-animation-delay: 2.0s;}
+  #hexGrid .hex .s2 {animation-delay: 2.2s; -moz-animation-delay: 2.2s; -webkit-animation-delay: 2.2s;}
+  #hexGrid .hex .s3 {animation-delay: 2.4s; -moz-animation-delay: 2.4s; -webkit-animation-delay: 2.4s;}
+  #hexGrid .hex .s4 {animation-delay: 2.6s; -moz-animation-delay: 2.6s; -webkit-animation-delay: 2.6s;}*/

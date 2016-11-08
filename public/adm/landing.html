@@ -1,0 +1,49 @@
+<div id="header" class="row">
+  <h1></h1>
+</div>
+
+<hr style="border-color:#333;"/>
+
+<div class="row" style="min-height:300px;">
+
+  <div class="admMENU btn-group col-xs-12">
+    <div class="btn btn-gubat btn-lg col-xs-4" onclick="navigateADM('status');"><i style="font-size:150%" class="glyphicon glyphicon-user"></i><br/>STATUS</div>
+    <div class="btn btn-gubat btn-lg col-xs-4" onclick="navigateADM('bulletin');"><i style="font-size:150%" class="glyphicon glyphicon-plus"></i><br/>BULLETIN</div>
+    <div class="btn btn-gubat btn-lg col-xs-4" onclick="navigateADM('remote');"><i style="font-size:150%" class="glyphicon glyphicon-expand"></i><br/>REMOTE</div>
+  </div>
+
+  <div class="row">
+    <br/>&nbsp;<br/>
+  </div>
+
+  <div id="right" class="col-xs-12 admCONTENT"></div>
+
+</div>
+
+<div class="row admFOOTER">
+  <button class="btn btn-danger btn-block" onclick="logout()">LOGOUT</button>
+</div>
+
+<script>
+var admAUTH = getCookie('auth');
+var admUSER = getCookie('user');
+
+  $(document).ready(function() {
+    if(admAUTH == 'TRUE' && admUSER.length > 0) {
+      /* alles is oke */
+      $('#header h1').html('Welcome, '+admUSER+'.')
+    } else {
+      /* wegsturen */
+      location.href = '/adm/noMeat.html';
+    }
+
+    navigateADM('status');
+  });
+
+  function logout() {
+    setCookie('auth','false','-1');
+    setCookie('user',admUSER,'-1');
+    socket.emit('LOGLOGOUT',admUSER);
+    location.href = "/adm/index.html";
+  }
+</script>

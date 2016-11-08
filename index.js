@@ -63,11 +63,15 @@ io.on('connection', function (socket) {
     });
   });
 
+  socket.on('LOGLOGIN', function(admUSER){
+    console.log('user '+admUSER+' succesfully logged in to SECTOR.ADM');
+  });
+
   socket.on('auth', function(keycode){
     connection.query('SELECT `agent_id`, `name`, `agent_pin`, `status`, `orders` FROM agents WHERE agent_pin = "'+ keycode +'" AND `status` != "deceased" AND `status` != "MIA" AND `status` != "inactive" LIMIT 1', function(err, rows, fields) {
 
       if (!err && (rows.length > 0)) {
-        console.log(rows[0].name);
+        // console.log(rows[0].name);
         socket.emit('authTrue', rows);
       } else if (rows.length == 0) {
         console.log('INCORRECT PIN ENTERED: '+ keycode);

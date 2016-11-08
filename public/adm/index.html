@@ -13,13 +13,12 @@
 
   <body>
 
-    <div class="container borders" style="padding-top: 15px; padding-bottom: 15px;">
+    <div class="container borders" style="padding-top: 15px; padding-bottom: 15px; background: #111111;">
 
       <div class="row">
           <a class="btn btn-gubat" onclick="colorToggle();"><span class="glyphicon glyphicon-cog"></span><br/>TOGGLE</a>&nbsp;
           <a class="btn btn-gubat" href="/index.html"><span class="glyphicon glyphicon-home"></span><br/>HOME</a>&nbsp;
           <a class="btn btn-gubat" href="index.html"><span class="glyphicon glyphicon-refresh"></span><br/>REFRESH</a>&nbsp;
-          <a class="btn btn-gubat disabled" href="/adm/remote.html"><span class="glyphicon glyphicon-expand"></span><br/>REMOTE</a>
       </div>
 
       <br/>
@@ -30,8 +29,6 @@
       </div>
 
       <div class="row" id="main-adm">
-
-
 
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
           <h1 class="error text-center console">Login.</h1>
@@ -142,6 +139,27 @@
         location.href = '/adm/noMeat.html';
       }
     });
+
+    socket.on('authTrue', function(rows){
+      attempts = 0;
+      setCookie('auth','TRUE','1');
+      setCookie('user',rows[0].name,'1');
+
+      location.reload();
+    });
+
+    $(document).ready(function() {
+      var admAUTH = getCookie('auth');
+      var admUSER = getCookie('user');
+
+      if(admAUTH == 'TRUE' && admUSER.length > 0) {
+
+        socket.emit('LOGLOGIN', admUSER);
+
+        $('#main-adm').load('landing.html');
+      }
+    });
+
 
   </script>
 

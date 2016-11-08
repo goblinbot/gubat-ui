@@ -76,9 +76,21 @@ function navigate(selector) {
   var selector = selector+".html";
   $('#right').load(selector);
 }
+function navigateADM(selector) {
+  $.get("/adm/pages/"+ selector + ".html")
+      .done(function(){
+        $("#right").empty();
+          $("#right").load(selector);
+      })
+      .fail(function(){
+        $("#right").empty();
+          $("#right").load("404.html");
+      });
+  var selector = "/adm/pages/"+selector+".html";
+  $('#right').load(selector);
+}
 
 function spaceships() {
-
   if(Jita_status == 0){
 
     $('#stargate').html("&nbsp;[ <span class='Ye blinktext'>LOADING...</span> ]");
@@ -92,7 +104,27 @@ function spaceships() {
     $('#stargate').show();
     Jita_status = 1;
   }
+}
 
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length,c.length);
+        }
+    }
+    return "";
 }
 
 $(document).ready(function()

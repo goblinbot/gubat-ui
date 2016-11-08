@@ -1,11 +1,3 @@
-<!--
-<div id="loading" class="hidden-xs hidden-sm">
-  <img src="_images/loops/crypto.gif"/>
-</div>
-<div id="loadingMobile" class="hidden-md hidden-lg">
-  <img src="_images/loops/signal.gif"/>
-</div> -->
-
 <div class="row2">
     <div class="seperate-1">&nbsp;</div>
     <div class="bar">
@@ -16,26 +8,26 @@
     <h3 id="loadtext" style="margin-left: 16px;">LOADING... <span class="Ye">COMPLETE</span>. PLEASE SELECT DATA STREAM.</h3>
 
     <div class="seperate-1">&nbsp;</div>
-    
+
     <!-- <div id="grid" class="row mZero pZero"> -->
     <div class="row mZero pZero">
 
-      <ul id="hexGrid">
+      <ul id="hexGrid" class="b2">
 
         <li class="hex">
-            <a class="hexIn" onclick="navigate('status')">
+            <a class="hexIn s1" onclick="navigate('status')">
               <img src="_images/hex_blank.png" alt="" />
               <p><i class="glyphicon glyphicon-user"></i>&nbsp;PERSONNEL / STATUS SCREEN</p>
             </a>
         </li>
         <li class="hex">
-            <a class="hexIn" onclick="navigate('bulletin')">
+            <a class="hexIn s3" onclick="navigate('bulletin')">
               <img src="_images/hex_blank.png" alt="" />
                   <p><i class="glyphicon glyphicon-pushpin"></i>&nbsp;CORP BULLETIN</p>
             </a>
         </li>
         <li class="hex">
-            <a class="hexIn" onclick="navigate('scoreboard')">
+            <a class="hexIn s2" onclick="navigate('scoreboard')">
               <img src="_images/hex_blank.png" alt="" />
                 <p><i class="glyphicon glyphicon-stats"></i>&nbsp;SCOREBOARD</p>
             </a>
@@ -44,7 +36,7 @@
         <!-- <li class="hex"></li> -->
 
         <li class="hex">
-            <a class="hexIn" onclick="navigate('schedule')">
+            <a class="hexIn s4" onclick="navigate('schedule')">
               <img src="_images/hex_blank.png" alt="" />
                 <p><i class="glyphicon glyphicon-time"></i>&nbsp;SCHEDULE</p>
             </a>
@@ -54,7 +46,7 @@
         <li class="hex"></li> -->
 
         <li class="hex">
-            <a class="hexIn" onclick="navigate('citadel')">
+            <a class="hexIn s3" onclick="navigate('citadel')">
               <img src="_images/hex_blank.png" alt="" />
                 <p><i class="glyphicon glyphicon-screenshot"></i>&nbsp;CITADEL NET</p>
             </a>
@@ -62,14 +54,14 @@
 
         <li class="hex">
             <!-- <a class="hexIn" onclick="navigate('ADM')"> -->
-            <a class="hexIn" href="/adm/index.html">
+            <a class="hexIn s2" href="/adm/index.html">
               <img src="_images/hex_blank.png" alt="" />
                 <p><i class="glyphicon glyphicon-lock"></i>&nbsp;ADM</p>
             </a>
         </li>
 
         <li class="hex">
-            <a class="hexIn" onclick="navigate('userfiles')">
+            <a class="hexIn s1" onclick="navigate('userfiles')">
               <img src="_images/hex_blank.png" alt="" />
                 <p class="Gy"><i class="Gy glyphicon glyphicon-compressed"></i>&nbsp;$\\:userfiles\*</p>
             </a>
@@ -80,10 +72,20 @@
 
 
     </div>
-
-
-
+    <!-- <div class="row3 b3">
+      <div class="col-xs-4">a</div>
+      <div class="col-xs-4">blockquote</div>
+      <div class="col-xs-4">c</div>
+    </div> -->
 
 
 <!-- ROW2 -->
 </div>
+<script>
+$(document).ready(function(){
+  if (CoCyan == 1) {
+    $('.hexIn img').empty();
+    $('.hexIn img').attr('src', '/_images/hex_blank_Y.png');
+  }
+});
+</script>
