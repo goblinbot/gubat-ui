@@ -9,8 +9,8 @@ var bodyParser = require('body-parser');
 var mysql   = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
-  user     : 'root',
-  password : '',
+  user     : 'gse',
+  password : '!#GSE_91nOd3!',
   database : 'thijsboerma_maati'
 });
 
