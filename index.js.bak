@@ -1,6 +1,10 @@
 var express = require('express');
 var app     = express();
-var http    = require('http').Server(app);
+var http    = require('http');
+http.createServer(function(request, response) {
+  console.log('server on');
+});
+
 var io      = require('socket.io')(http);
 var $       = require('jquery');
 
@@ -27,10 +31,10 @@ app.use('_includes', express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 var port = process.env.PORT || 5000;
-http.listen(port, function(){
-  console.log('Activity detected on pathway *:'+ port +'. Stand by for engagement.')
-});
 
+app.listen(port, function(){
+  console.log('Activity detected on pathway *:'+ port +' . Stand by for engagement.');
+});
 
 
 /* pathing / routing */
