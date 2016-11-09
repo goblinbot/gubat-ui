@@ -23,8 +23,8 @@
 
     <div id="bulletinControls" class="row">
       <div class="btn btn-gubat-alt" onclick="navigate('default')"><i class="glyphicon glyphicon-home"></i><br/>HOME</div>
-      <div class="btn btn-gubat page-prev"><i class="glyphicon glyphicon-chevron-left"></i><br/>NAV</div>
-      <div class="btn btn-gubat page-next"><i class="glyphicon glyphicon-chevron-right"></i><br/>NAV</div>
+      <div class="btn btn-gubat btn-pager page-prev disabled"><i class="glyphicon glyphicon-chevron-left"></i><br/>PREV</div>
+      <div class="btn btn-gubat btn-pager page-next"><i class="glyphicon glyphicon-chevron-right"></i><br/>NEXT</div>
     </div>
 
     <div class="row">
@@ -35,3 +35,19 @@
 
 
   </div>
+<script>
+$(document).ready(function(){
+  $('.btn-pager').click(function(e){
+    e.preventDefault();
+
+    if($(this).hasClass('disabled')){
+      return false;
+    } else {
+      console.log('ping');
+    }
+
+  });
+
+
+});
+</script>
