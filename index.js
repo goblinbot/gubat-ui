@@ -45,6 +45,7 @@ io.on('connection', function (socket) {
 
   socket.on('initCorpBulletin', function(msg){
     connection.query('SELECT `id`,`title`,`content`,`icon`,`priority` FROM bulletin ORDER BY `id` ASC', function(err, rows, fields) {
+    connection.query('SELECT `id`,`title`,`content`,`icon`,`priority` FROM bulletin ORDER BY `id` DESC', function(err, rows, fields) {
       if (!err) {
         socket.emit('loadCorpBulletin', rows);
       } else {
@@ -130,6 +131,20 @@ io.on('connection', function (socket) {
         io.emit('realtimeUpdate', rows);
       } else {
         console.log('Error while selecting updated global status..');
+      }
+    });
+
+  });
+
+  socket.on('postBULLETIN', function(utitle, uicon, uprio,ucontent) {
+
+    var post = {title: utitle,icon: uicon, priority: uprio, content: ucontent};
+    connection.query('INSERT INTO bulletin SET ?', post, function(err, result) {
+      if (!err) {
+        console.log(utitle+' - '+uicon+' - ' + uprio+ ' - '+ ucontent + ' ...');
+        io.emit('updateBulletin', utitle);
+      } else {
+        console.log('Error while posting bulletin. '+ err);
       }
     });
 

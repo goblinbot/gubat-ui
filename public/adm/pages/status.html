@@ -72,11 +72,6 @@ var submitOnce = 0;
       }
     });
 
-    $('label').click(function(){
-
-      $(this).addClass('active');
-    });
-
     $('#updateOrders').submit(function(e) {
       e.preventDefault();
       if (submitOnce == 0) {

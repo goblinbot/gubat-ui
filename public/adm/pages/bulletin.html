@@ -1,18 +1,48 @@
-SCHEITPALEN
+<div class="row">
 
+  <div class="row">
+    <h1>Post articles to bulletin</h1>
+  </div>
+  <hr style="border-color:#222;"/>
 
+  <form id="postBulletin">
+    <div class="row">
+      <input type="text" class="form-control" maxlength="30" name="uTITLE" id="uTITLE" value="" placeholder="TITLE YOUR DAMNED POSTS" required style="height:48px;font-size:30px;"></input>
+        <br/>
+          <select id="uICON" class="form-control" style="height:48px;font-size:24px;color:#111!important;">
+            <option value="1"> <i class="glyphicon glyphicon-check"></i> CHECKBOX ICON</option>
+            <option value="2"> <i class="glyphicon glyphicon-screenshot"></i> CROSSHAIR ICON</option>
+            <option value="3"> <i class="glyphicon glyphicon-alert"></i> ALERT SIGN</option>
+            <option value="4"> <i class="glyphicon glyphicon-user"></i> USER ICON</option>
+            <option value="5"> <i class="glyphicon glyphicon-calendar"></i> CALENDAR ICON</option>
+            <option value="6" selected> <i class="glyphicon glyphicon-cog"></i> COGWHEEL ICON</option>
+          </select>
+        <br/>
+          <select id="uPRIO" class="form-control" style="height:48px;font-size:24px;">
+            <option value="1">HIGH PRIORITY</option>
+            <option value="2">MEDIUM PRIORITY</option>
+            <option value="3">CODE GREEN</option>
+            <option selected value="4">NO COLOR (DEFAULT)</option>
+          </select>
+        <br/>
+          <textarea id="uCONTENT" required class="form-control" style="min-height:300px;" placeholder="..AND ON THE SECOND DAY, TULOS DRANK 40 COFFEES. THAT'S AS MUCH AS FOUR TENS. AND THAT'S INCREDIBLE."></textarea>
+        <br/>
+      <input class="btn btn-primary btn-lg btn-block" name="SAVE" value="SAVE" type="submit"/>
+    </div>
+  </form>
+  <div name="seperator">&nbsp;<br/><br/></div>
 
-
-
+</div>
 <script>
-var admAUTH = getCookie('auth');
-var admUSER = getCookie('user');
-var onlyOnce = 0;
+var admAUTH     = getCookie('auth');
+var admUSER     = getCookie('user');
+var onlyOnce    = 0;
+var submitOnce  = 0;
 
   $(document).ready(function() {
 
     $('.btn').removeClass('active');
-    $('#btnBTL').addClass('active');
+    $('#btnBLT').addClass('active');
 
     if(admAUTH == 'TRUE' && admUSER.length > 0) {
 
@@ -20,5 +50,27 @@ var onlyOnce = 0;
       /* wegsturen */
       location.href = '/adm/noMeat.html';
     }
+
+    $('#postBulletin').submit(function(e) {
+      e.preventDefault();
+      if (submitOnce == 0) {
+        submitOnce = (submitOnce+1);
+
+        var utitle    = $('#uTITLE').val();
+        var uicon     = $('#uICON').val();
+        var uprio     = $('#uPRIO').val();
+        var ucontent  = $('#uCONTENT').val();
+        socket.emit('postBULLETIN', utitle, uicon, uprio,ucontent);
+
+      } else {
+        return false;
+      }
+    });
+
+    socket.on('updateBulletin', function(utitle) {
+      $('#right').empty();
+      $('#right').html('<div class="row"><h2 class="Ye">Thank you for posting [ '+utitle+' ] corp bulletin.</h2><br/><p>Use the buttons above to keep using ADM.</p></div>');
+    });
+
   });
 </script>

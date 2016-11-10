@@ -200,7 +200,7 @@
     });
 
     var oldSky = getCookie('oldSky');
-    console.log('.. '+ oldSky);
+    setCookie('oldSky','','-1');
 
     if(oldSky.length > 0) {
       freshmeat = (freshmeat+1);

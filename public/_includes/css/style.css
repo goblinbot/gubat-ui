@@ -48,7 +48,7 @@ h3.bordered {
   border-bottom : 1px solid #333;
 }
 
-select, option {
+select, option, option .glyphicon {
   color         : #222;
 }
 
@@ -374,16 +374,16 @@ p.console, .console {
 
 .smallfolder, .smallfolder:hover {
     background-repeat:no-repeat;
-    background-size : 166px 130px;
+    background-size : 154px 130px;
     background-position: center;
     width           : 90%;
-    height          : 136px;
+    height          : 130px;
     margin          : 8px;
 }
 
 /* status pagina */
 .statusBlock {
-  min-height   : 222px;
+  min-height   : 212px;
   padding      : 3px;
 }
 .statusBlock h3 {
