@@ -1,10 +1,89 @@
-REMOTE CONTROL
+<div class="row">
 
+  <h1 class="Alt">ASSUME REMOTE CONTROL</h1>
+  <p>BE ADVISED: THIS OVERRIDES <span class="Ye">ALL</span> ACTIVE CONNECTIONS</p>
+
+  <div class="row">
+    <div class="col-xs-4">
+      <div class="btn btn-success btn-lg btn-block" onclick="forceRemote('default');"><i class="glyphicon glyphicon-home"></i><br/>HOME</div>
+    </div>
+    <div class="col-xs-4">
+      <div class="btn btn-primary btn-lg btn-block" onclick="forceRemote('status');"><i class="glyphicon glyphicon-user"></i><br/>STATUS</div>
+    </div>
+    <div class="col-xs-4">
+      <div class="btn btn-info btn-lg btn-block" onclick="forceRemoteAction('MIA');"><i class="glyphicon glyphicon-plus"></i><br/>STATUS -> MIA/RIP</div>
+    </div>
+  </div>
+
+  <div class="row">&nbsp;</div>
+
+  <div class="row">
+    <div class="col-xs-4">
+      <div class="btn btn-primary btn-lg btn-block" onclick="forceRemote('citadel');"><i class="glyphicon glyphicon-screenshot"></i><br/>CITADEL</div>
+    </div>
+    <div class="col-xs-4">
+      <div class="btn btn-info btn-lg btn-block" onclick="forceRemoteAction('scancitadel');"><i class="glyphicon glyphicon-user"></i><br/>CITADEL ->SCAN</div>
+    </div>
+    <div class="col-xs-4">
+      <div class="btn btn-danger btn-lg btn-block" onclick="forceRefresh();"><i class="glyphicon glyphicon-alert"></i><br/>FORCE RESET</div>
+    </div>
+  </div>
+
+  <div class="row">&nbsp;</div>
+
+  <div class="row">
+    <div class="col-xs-4">
+      <div class="btn btn-primary btn-lg btn-block" onclick="forceRemote('scoreboard');"><i class="glyphicon glyphicon-stats"></i><br/>SCOREBOARD</div>
+    </div>
+    <div class="col-xs-4">
+      <div class="btn btn-gubat-alt btn-lg btn-block" onclick="forceSpace();"><i class="glyphicon glyphicon-plane"></i><br/>[SPACESHIPS]</div>
+    </div>
+    <div class="col-xs-4">
+      <div class="btn btn-danger btn-lg btn-block" onclick="forceRemote('404');"><i class="glyphicon glyphicon-remove"></i><br/>FORCE 404</div>
+    </div>
+
+  </div>
+
+  <div class="row">&nbsp;</div>
+
+  <div class="row">
+    <div class="col-xs-4">
+      <div class="btn btn-gubat btn-lg btn-block" onclick="forceToggle('C');"><i class="glyphicon glyphicon-refresh"></i><br/>TOGGLE[CYAN]</div>
+    </div>
+    <div class="col-xs-4">
+      <div class="btn btn-gubat btn-lg btn-block" onclick="forceToggle('Y');"><i class="glyphicon glyphicon-refresh"></i><br/>TOGGLE[YELLOW]</div>
+    </div>
+    <div class="col-xs-4">
+      <div class="btn btn-gubat-alt btn-lg btn-block" onclick="forceToggle();"><i class="glyphicon glyphicon-refresh"></i><br/>TOGGLE[DEFAULT]</div>
+    </div>
+  </div>
+
+</div>
+<div class="row">
+  <hr class="borders"/>
+</div>
 
 <script>
 var admAUTH = getCookie('auth');
 var admUSER = getCookie('user');
 var onlyOnce = 0;
+
+function forceRemote(selector) {
+  socket.emit('forceNavigate',selector);
+  console.log(selector);
+}
+function forceRemoteAction(selector) {
+
+}
+function forceRefresh() {
+  socket.emit('clearSkies');
+}
+function forceToggle(selector) {
+  socket.emit('globalToggle', selector);
+}
+function forceSpace() {
+  socket.emit('globalSpace');
+}
 
   $(document).ready(function() {
 

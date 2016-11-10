@@ -183,12 +183,46 @@
 <!-- EINDE HOOFDCONTAINER -->
 </div>
 
+  <input type='hidden' id="navCount" class="hidden"></input>
+
+
   <script type="text/javascript" src="/_includes/js/jquery.min.js"></script>
   <script type="text/javascript" src="/_includes/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>
   <script type="text/javascript" src="/_includes/js/functions.js"></script>
   <script>
-    $('#right').load('default.html');
+  var freshmeat = 0;
+  $(document).ready(function(){
+
+    socket.on('clearSky', function(selector){
+      setCookie('oldSky',selector,'1');
+      location.reload();
+    });
+
+    var oldSky = getCookie('oldSky');
+    console.log('.. '+ oldSky);
+
+    if(oldSky.length > 0) {
+      freshmeat = (freshmeat+1);
+      navigate(oldSky);
+    }
+
+    if(freshmeat < 1) {
+      navigate('default');
+    }
+
+    socket.on('forceNavigate', function(selector){
+      navigate(selector);
+    });
+
+    socket.on('forceToggle', function(selector){
+      colorToggle(selector);
+    });
+
+    socket.on('forceSpace', function(){
+      spaceships();
+    });
+  });
   </script>
 </body>
 </html>

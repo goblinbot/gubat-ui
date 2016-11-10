@@ -43,6 +43,26 @@ io.on('connection', function (socket) {
   countClients++;
   console.log('User has entered the network. '+countClients+' active clients.');
 
+  socket.on('initCorpBulletin', function(msg){
+    connection.query('SELECT `id`,`title`,`content`,`icon`,`priority` FROM bulletin ORDER BY `id` ASC', function(err, rows, fields) {
+      if (!err) {
+        socket.emit('loadCorpBulletin', rows);
+      } else {
+        console.log('Error while performing DB Query :: CORP BULLETIN :: '+ err);
+      }
+    });
+  });
+
+  socket.on('navLimit', function(selector){
+    console.log('Deploying ClearSky('+selector+') : navlimit reached.');
+    socket.emit('clearSky', selector);
+  });
+
+  socket.on('clearSkies', function(){
+    console.log('FORCE CLEARSKIES STANDBY ... ');
+    io.emit('clearSky','default');
+  });
+
   /*status*/
   socket.on('statuspage', function(msg){
     connection.query('SELECT `agent_id`,`name`,`rank`,`orders`,`backup`,`status` FROM agents WHERE `status` != "deceased" AND `status` != "MIA" AND `status` != "inactive" ORDER BY `agent_id` ASC', function(err, rows, fields) {
@@ -115,16 +135,15 @@ io.on('connection', function (socket) {
 
   });
 
-  // io.on('globalStatusUpdate', function(uid) {
-    // connection.query('SELECT `agent_id`,`name`,`rank`,`orders`,`backup`,`status` FROM agents WHERE `agent_id` = "'+uid+'" LIMIT 1 ', function(err, rows, fields) {
-    //   if (!err) {
-    //     console.log(rows);
-    //     io.emit('realtimeUpdate', rows);
-    //   } else {
-    //     console.log('Error while selecting updated global status..');
-    //   }
-    // });
-  // });
+  socket.on('forceNavigate', function(selector) {
+    io.emit('forceNavigate', selector);
+  });
+  socket.on('globalToggle', function(selector) {
+    io.emit('forceToggle', selector);
+  });
+  socket.on('globalSpace', function() {
+    io.emit('forceSpace');
+  });
 
   socket.on('disconnect', function(){
     countClients = (countClients-1);

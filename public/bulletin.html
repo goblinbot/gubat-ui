@@ -18,13 +18,20 @@
     </div>
 
     <div id="bulletinHeader" class="row">
+      <h3>LOADING BULLETIN . . . <span class="Ye">COMPLETE</span></h3>
+      <br/>
       <h1>:: Corp Bulletin ::</h1>
     </div>
 
     <div id="bulletinControls" class="row">
-      <div class="btn btn-gubat-alt" onclick="navigate('default')"><i class="glyphicon glyphicon-home"></i><br/>HOME</div>
-      <div class="btn btn-gubat btn-pager page-prev disabled"><i class="glyphicon glyphicon-chevron-left"></i><br/>PREV</div>
-      <div class="btn btn-gubat btn-pager page-next"><i class="glyphicon glyphicon-chevron-right"></i><br/>NEXT</div>
+      <div class="col-xs-9">
+        <div class="btn btn-gubat-alt" onclick="navigate('default')"><i class="glyphicon glyphicon-home"></i><br/>HOME</div>
+        <div class="btn btn-gubat btn-pager page-prev"><i class="glyphicon glyphicon-chevron-left"></i><br/>PREV</div>
+        <div class="btn btn-gubat btn-pager page-next"><i class="glyphicon glyphicon-chevron-right"></i><br/>NEXT</div>
+      </div>
+      <div class="col-xs-3 pageCounter Ye">
+        <h2>0</h2>
+      </div>
     </div>
 
     <div class="row">
@@ -37,17 +44,58 @@
   </div>
 <script>
 $(document).ready(function(){
+
+  var countPages    = 0;
+  var countToSix    = 0;
+  var countArticles = 0;
+  var bulletinRes   = "";
+  var randDelay     = 1;
+
+  socket.emit('initCorpBulletin'), 'true';
+
+  socket.on('loadCorpBulletin', function(rows){
+
+    $('#bulletinContent').empty();
+
+    for (var i = 0; i < rows.length; i++){
+
+      if(countToSix = 0) {
+        countPages++
+        $('.pageCounter').html('<h2 class="Ye">'+countPages+'</h2>');
+
+
+      }
+        countToSix++;
+          if (countToSix > 6) {
+            countToSix = 1;
+            countPages++
+
+
+          }
+
+      randDelay++;
+        if (randDelay > 4) {
+          randDelay = 2;
+        }
+
+
+
+    }
+  });
+
+  if (countPages < 2) {
+    $('.btn-pager').addClass('disabled');
+  } else {
+    $('.pageCounter').html('<h2 class="Ye">'+countPages+'</h2>');
+  }
+
   $('.btn-pager').click(function(e){
     e.preventDefault();
-
     if($(this).hasClass('disabled')){
       return false;
     } else {
       console.log('ping');
     }
-
   });
-
-
 });
 </script>

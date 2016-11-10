@@ -2,8 +2,18 @@ var socket      = io();
 var Jita_status = 0;
 var CoCyan      = 0;
 var selector    = "";
+var navLimit    = 0;
 
-function colorToggle(){
+function colorToggle(forceColor){
+
+  if (forceColor == 'C') {
+    CoCyan = 1;
+  } else if (forceColor == 'Y') {
+    CoCyan = 0;
+  } else {
+    /* default! */
+  }
+
   if (CoCyan == 0) {
       $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', '/_includes/css/codeY.css') );
       $('.hexIn img').empty();
@@ -62,21 +72,35 @@ function holiday() {
 
 function navigate(selector) {
 
-  $.get(selector + ".html")
-      .done(function(){
-        $("#right").empty();
-          $("#right").load(selector);
-      })
-      .fail(function(){
-        $("#right").empty();
-          $("#right").load("404.html");
-      });
+  navLimit = (navLimit+1);
+  // console.log('navlimit '+navLimit);
+
+  $("#right").empty();
+
+  if(navLimit < 16) {
+    $.get(selector + ".html")
+        .done(function(){
+
+          $("#right").empty();
+            $("#right").load(selector+'.html');
+        })
+        .fail(function(){
+          $("#right").empty();
+            $("#right").load("404.html");
+        });
+  } else {
+    socket.emit('navLimit', selector);
+  }
 
 
-  var selector = selector+".html";
-  $('#right').load(selector);
+  //
+  // var selector = selector+".html";
+  // $('#right').load(selector);
 }
 function navigateADM(selector) {
+
+  $("#right").empty();
+
   $.get("/adm/pages/"+ selector + ".html")
       .done(function(){
         $("#right").empty();
