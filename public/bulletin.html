@@ -26,8 +26,8 @@
     <div id="bulletinControls" class="row">
       <div class="col-xs-9">
         <div class="btn btn-gubat-alt" onclick="navigate('default')"><i class="glyphicon glyphicon-home"></i><br/>HOME</div>
-        <div class="btn btn-gubat btn-pager page-prev"><i class="glyphicon glyphicon-chevron-left"></i><br/>PREV</div>
-        <div class="btn btn-gubat btn-pager page-next"><i class="glyphicon glyphicon-chevron-right"></i><br/>NEXT</div>
+        <div class="btn btn-gubat btn-pager btn-pager-left" ><i class="glyphicon glyphicon-chevron-left"></i><br/>PREV</div>
+        <div class="btn btn-gubat btn-pager btn-pager-right"><i class="glyphicon glyphicon-chevron-right"></i><br/>NEXT</div>
       </div>
       <div class="col-xs-3 pageCounter Ye">
         <h2>-</h2>
@@ -52,47 +52,28 @@ $(document).ready(function(){
   var newLine       = "";
   var randDelay     = 1;
   var xSTYLE        = "";
+  var xICON         = "";
   var pageOpen      = 0;
+  var direction     = "";
 
-  socket.emit('initCorpBulletin'), 'true';
+  var activePage    = 1;
 
   socket.on('loadCorpBulletin', function(rows){
 
     $('#bulletinContent').empty();
 
     for (var i = 0; i < rows.length; i++){
-      console.log('CHECK '+ rows[i].id);
 
-      switch(rows[i].icon) {
-        case 1:
-          rows[i].icon = "check";
-          break;
-        case 2:
-          rows[i].icon = "screenshot";
-          break;
-        case 3:
-          rows[i].icon = "alert";
-          break;
-        case 4:
-          rows[i].icon = "user";
-          break;
-        case 5:
-          rows[i].icon = "calendar";
-          break;
-        case 6:
-          rows[i].icon = "cog";
-          break;
-        default:
-          rows[i].icon = "cog";
-      }
+      if(rows[i].icon == 1) {xICON = "check";} else if(rows[i].icon == 2) {xICON = "screenshot";} else if(rows[i].icon == 3) {xICON = "alert";}
+       else if(rows[i].icon == 4) {xICON = "user";} else if(rows[i].icon == 5) {xICON = "calendar";} else if(rows[i].icon == 6) {xICON = "cog";}
+       else {xICON = "cog";}
 
       if(countToSix == 0) {
         countPages = (countPages+1);
         $('.pageCounter').html('<h2 class="Ye">'+countPages+'</h2>');
 
         pageOpen = 1;
-        newLine = ("<div class='bulletinPage visible' id='page-"+countPages+"'>");
-        $('#bulletinContent').append(newLine);
+        newLine = (newLine + "<div class='bulletinPage visible' id='page-"+countPages+"'>");
       }
 
         countToSix = (countToSix+1);
@@ -105,9 +86,8 @@ $(document).ready(function(){
             countPages = (countPages+1);
 
             pageOpen = 1;
-            newLine = ("</div><div class='bulletinPage' id='page-"+countPages+"'>");
-            $('#bulletinContent').append(newLine);
-
+            newLine = (newLine + "</div><div class='bulletinPage' id='page-"+countPages+"'>");
+            $('.pageCounter').html('<h2 class="Ye">'+countPages+'</h2>');
           }
 
       randDelay++;
@@ -125,35 +105,65 @@ $(document).ready(function(){
                 xSTYLE = '';
               }
 
-        newLine = ("<article><div class='row bulletinItem b"+randDelay+"'><h4><span class='bTitle "+xSTYLE+"'> <i class='glyphicon glyphicon-"+rows[i].icon+"'></i> "+rows[i].title+"</span></h4><p>"+rows[i].content+"</p></div></article>");
-        $('#bulletinContent').append(newLine);
-
+        newLine = (newLine + "<article><div class='row bulletinItem b"+randDelay+"'><h4><span class='bTitle "+xSTYLE+"'> <i class='glyphicon glyphicon-"+xICON+"'></i> "+rows[i].title+"</span></h4><p>"+rows[i].content+"</p></div></article>");
+        xICON = "";
     }
 
     /* finale check */
-    if (pageOpen == 0 && (countPages > 1)) {
-      $('#bulletinContent').append('</div>');
+    if (pageOpen == 1 && (countPages > 0)) {
+      newLine = (newLine +'</div>');
+    }
+    if(pageOpen == 0 && countToSix == 6) {
+      newLine = (newLine +'</div>');
     }
 
+    $('#bulletinContent').html(newLine);
+
+    if (countPages < 2) {
+      $('.btn-pager').addClass('disabled');
+    }
+
+    $('.btn-pager').click(function(){
+      var buttonclicked = (this);
+
+      if($(buttonclicked).hasClass('btn-pager-left')) {
+        direction = 'prev';
+      } else if ($(buttonclicked).hasClass('btn-pager-right')) {
+        direction = 'next';
+              console.log('ping');
+      } else {
+        return false;
+      }
+
+
+      if (direction == 'prev' && activePage == 1) {
+        return false;
+      } else if (direction == 'next' && activePage == countPages) {
+        return false;
+      } else if (countPages < 2) {
+        return false;
+      } else {
+
+        if(direction == 'next') {
+
+          $('#page-'+activePage).hide();
+          activePage = (activePage+1);
+          $('#page-'+activePage).show();
+
+        } else if (direction == 'prev') {
+
+          $('#page-'+activePage).hide();
+          activePage = (activePage-1);
+          $('#page-'+activePage).show();
+
+        }
+      }
+
+    });
 
   });
 
-  if (countPages < 2) {
-    $('.btn-pager').addClass('disabled');
-    $('.pageCounter').empty();
-    $('.pageCounter').html('<h2 class="Ye">'+countPages+'</h2>');
-  } else {
-    $('.pageCounter').empty();
-    $('.pageCounter').html('<h2 class="Ye">'+countPages+'</h2>');
-  }
-
-  $('.btn-pager').click(function(e){
-    e.preventDefault();
-    if($(this).hasClass('disabled')){
-      return false;
-    } else {
-      console.log('ping');
-    }
-  });
+    socket.emit('initCorpBulletin'), 'true';
 });
+
 </script>
