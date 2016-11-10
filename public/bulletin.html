@@ -30,7 +30,7 @@
         <div class="btn btn-gubat btn-pager page-next"><i class="glyphicon glyphicon-chevron-right"></i><br/>NEXT</div>
       </div>
       <div class="col-xs-3 pageCounter Ye">
-        <h2>0</h2>
+        <h2>-</h2>
       </div>
     </div>
 
@@ -49,7 +49,10 @@ $(document).ready(function(){
   var countToSix    = 0;
   var countArticles = 0;
   var bulletinRes   = "";
+  var newLine       = "";
   var randDelay     = 1;
+  var xSTYLE        = "";
+  var pageOpen      = 0;
 
   socket.emit('initCorpBulletin'), 'true';
 
@@ -58,18 +61,52 @@ $(document).ready(function(){
     $('#bulletinContent').empty();
 
     for (var i = 0; i < rows.length; i++){
+      console.log('CHECK '+ rows[i].id);
 
-      if(countToSix = 0) {
-        countPages++
+      switch(rows[i].icon) {
+        case 1:
+          rows[i].icon = "check";
+          break;
+        case 2:
+          rows[i].icon = "screenshot";
+          break;
+        case 3:
+          rows[i].icon = "alert";
+          break;
+        case 4:
+          rows[i].icon = "user";
+          break;
+        case 5:
+          rows[i].icon = "calendar";
+          break;
+        case 6:
+          rows[i].icon = "cog";
+          break;
+        default:
+          rows[i].icon = "cog";
+      }
+
+      if(countToSix == 0) {
+        countPages = (countPages+1);
         $('.pageCounter').html('<h2 class="Ye">'+countPages+'</h2>');
 
-
+        pageOpen = 1;
+        newLine = ("<div class='bulletinPage visible' id='page-"+countPages+"'>");
+        $('#bulletinContent').append(newLine);
       }
-        countToSix++;
+
+        countToSix = (countToSix+1);
+          if (countToSix == 6) {
+            pageOpen = 0;
+          }
+
           if (countToSix > 6) {
             countToSix = 1;
-            countPages++
+            countPages = (countPages+1);
 
+            pageOpen = 1;
+            newLine = ("</div><div class='bulletinPage' id='page-"+countPages+"'>");
+            $('#bulletinContent').append(newLine);
 
           }
 
@@ -78,14 +115,35 @@ $(document).ready(function(){
           randDelay = 2;
         }
 
+        if(rows[i].priority == 1) {
+          xSTYLE = 'critical';
+          } else if(rows[i].priority == 2) {
+            xSTYLE = 'unknown';
+            } else if(rows[i].priority == 3) {
+              xSTYLE = 'online';
+              } else {
+                xSTYLE = '';
+              }
 
+        newLine = ("<article><div class='row bulletinItem b"+randDelay+"'><h4><span class='bTitle "+xSTYLE+"'> <i class='glyphicon glyphicon-"+rows[i].icon+"'></i> "+rows[i].title+"</span></h4><p>"+rows[i].content+"</p></div></article>");
+        $('#bulletinContent').append(newLine);
 
     }
+
+    /* finale check */
+    if (pageOpen == 0 && (countPages > 1)) {
+      $('#bulletinContent').append('</div>');
+    }
+
+
   });
 
   if (countPages < 2) {
     $('.btn-pager').addClass('disabled');
+    $('.pageCounter').empty();
+    $('.pageCounter').html('<h2 class="Ye">'+countPages+'</h2>');
   } else {
+    $('.pageCounter').empty();
     $('.pageCounter').html('<h2 class="Ye">'+countPages+'</h2>');
   }
 

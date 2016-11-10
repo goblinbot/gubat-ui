@@ -45,6 +45,7 @@ function backToStatus() {
 }
 
 $(document).ready(function(){
+  var currentPage   = 1;
 
   socket.emit('statuspage'), 'true';
 
@@ -58,6 +59,8 @@ $(document).ready(function(){
     var activeClass   = 'Gy';
     var statusResults = "";
     var randDelay     = 1;
+
+    currentPage = 1;
 
     for (var i = 0; i < rows.length; i++){
       /* active counter */
@@ -121,6 +124,8 @@ $(document).ready(function(){
     var statusResults = "";
     var randDelay     = 1;
 
+    currentPage   = 2;
+
     for (var i = 0; i < rows.length; i++){
 
       randDelay++;
@@ -182,18 +187,33 @@ $(document).ready(function(){
   });
 
   socket.on('realtimeUpdate', function(rows) {
-    console.log(rows[0]);
-    var updateThis = $('table#'+rows[0].agent_id+'');
+    if (currentPage == 1) {
+      console.log(rows[0]);
+      var updateThis = $('table#'+rows[0].agent_id+'');
 
-      // var orderTD = ($(updateThis).find('td.tdorders'));
-      // console.log(orderTD);
+        // var orderTD = ($(updateThis).find('td.tdorders'));
+        // console.log(orderTD);
 
-      // $(updateThis+' td.tdstatus').empty();
-      $(updateThis).find('td.tdstatus').empty();
-        $(updateThis).find('td.tdstatus').html(' <span class="' + rows[0].status + '">' + rows[0].status + '</span> ');
-      $(updateThis).find('td.tdorders').empty();
-        $(updateThis).find('td.tdorders').html('' + rows[0].orders + '');
+        // $(updateThis+' td.tdstatus').empty();
+        $(updateThis).find('td.tdstatus').empty();
+          $(updateThis).find('td.tdstatus').html(' <span class="' + rows[0].status + '">' + rows[0].status + '</span> ');
+        $(updateThis).find('td.tdorders').empty();
+          $(updateThis).find('td.tdorders').html('' + rows[0].orders + '');
+    }
   });
+
+  socket.on('forceRemoteAction', function(selector){
+    if (currentPage == 1) {
+      if (selector == 'showrip') {
+        showRip();
+      }
+    } else if (currentPage == 2) {
+      if (selector == 'showrip') {
+        backToStatus();
+      }
+    }
+  });
+
 });
 </script>
 </div>

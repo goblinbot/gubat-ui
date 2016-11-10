@@ -144,6 +144,9 @@ io.on('connection', function (socket) {
   socket.on('globalSpace', function() {
     io.emit('forceSpace');
   });
+  socket.on('forceRemoteAction', function(selector) {
+    io.emit('forceRemoteAction', selector);
+  });
 
   socket.on('disconnect', function(){
     countClients = (countClients-1);

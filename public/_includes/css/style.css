@@ -424,6 +424,23 @@ a.agentBar {
 a.agentBar {
   width       : 100%;
 }
+/* bulletin */
+.bulletinPage {
+  display: none;
+}
+.bulletinPage.visible {
+  display: block;
+}
+
+.bulletinItem {
+  border-radius : 0 16px 0 0;
+  padding       : 3px 3px 3px 12px;
+  border-bottom : 1px solid #002222;
+}
+  .bulletinItem:hover {
+    background  : #1F1F1F;
+    cursor      : default;
+  }
 
 /* 404 en spaceships */
 

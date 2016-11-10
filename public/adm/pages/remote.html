@@ -11,7 +11,7 @@
       <div class="btn btn-primary btn-lg btn-block" onclick="forceRemote('status');"><i class="glyphicon glyphicon-user"></i><br/>STATUS</div>
     </div>
     <div class="col-xs-4">
-      <div class="btn btn-info btn-lg btn-block" onclick="forceRemoteAction('MIA');"><i class="glyphicon glyphicon-plus"></i><br/>STATUS -> MIA/RIP</div>
+      <div class="btn btn-info btn-lg btn-block" onclick="forceRemoteAction('showrip');"><i class="glyphicon glyphicon-plus"></i><br/>STATUS -> MIA/RIP</div>
     </div>
   </div>
 
@@ -73,7 +73,7 @@ function forceRemote(selector) {
   console.log(selector);
 }
 function forceRemoteAction(selector) {
-
+  socket.emit('forceRemoteAction', selector);
 }
 function forceRefresh() {
   socket.emit('clearSkies');
