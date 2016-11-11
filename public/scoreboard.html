@@ -1,7 +1,7 @@
 <script>
 
   // scoreTypes houdt bij hoe veel er gelooped moet worden want Javascript Nee, Php ja
-  var scoreTypes = 12;
+  var scoreTypes = 13;
 
   var score0 = ['range_kills','Top Gunner','Ranged kills'];
     var score1 = ['melee_kills','Huge Guts','Melee kils'];
@@ -54,6 +54,7 @@
       <br/>
 
     <h4><span class="glyphicon glyphicon-stats"></span>&nbsp;CURRENT TOP SCORES</h4>
+    <br/><hr/>
       <br/>
         <div id="leaderboards"></div>
       <br/>
@@ -65,6 +66,10 @@
 <script>
 
 $(document).ready(function(){
+  var onlyOnce = 0;
+
+  $('#leaderboards').empty();
+
 
   socket.emit('statuspage'), 'true';
   socket.on('statuspage', function(rows){
@@ -80,6 +85,78 @@ $(document).ready(function(){
     $('#userSelect').html(statusResults);
   });
 
+  var leaderboards    = "";
+  var currentSelector = "";
+  // leaderboards = (leaderboards+'' );
+
+  for (var i = 1; i < scoreTypes; i++){
+
+      if(i==1){currentSelector=score0;}else
+        if(i==2){currentSelector=score1;}else
+          if(i==3){currentSelector=score2;}else
+            if(i==4){currentSelector=score3;}else
+              if(i==5){currentSelector=score4;}else
+                if(i==6){currentSelector=score5;}else
+                if(i==7){currentSelector=score6;}else
+              if(i==8){currentSelector=score7;}else
+            if(i==9){currentSelector=score8;}else
+          if(i==10){currentSelector=score9;}else
+        if(i==11){currentSelector=score10;}else
+      if(i==12){currentSelector=score11;}
+    else {console.log('end');}
+
+    socket.emit('getTopScore', currentSelector[0]);
+    console.log(currentSelector[0]);
+  }
+
+  var i = 0;
+  $('#leaderboards').empty();
+
+  socket.on('setTopScore', function(rows){
+
+    var leaderboards = "";
+    i = (i+1);
+
+    if(i==1){currentSelector=score0;}else
+      if(i==2){currentSelector=score1;}else
+        if(i==3){currentSelector=score2;}else
+          if(i==4){currentSelector=score3;}else
+            if(i==5){currentSelector=score4;}else
+              if(i==6){currentSelector=score5;}else
+              if(i==7){currentSelector=score6;}else
+            if(i==8){currentSelector=score7;}else
+          if(i==9){currentSelector=score8;}else
+        if(i==10){currentSelector=score9;}else
+      if(i==11){currentSelector=score10;}else
+    if(i==12){currentSelector=score11; onlyOnce = 1;}
+  else {console.log('end');}
+
+  var rowsAlt = rows[0];
+  // console.log(rowsAlt[currentSelector[0]]);
+    if (onlyOnce == 0) {
+      leaderboards = (leaderboards + '<div class="row">');
+        leaderboards = (leaderboards + '<div class="col-xs-6 col-sm-3">'+currentSelector[1]+'</div>');
+        leaderboards = (leaderboards + '<div class="col-xs-6 col-sm-3">'+rows[0].name+'</div>');
+        leaderboards = (leaderboards + '<div class="col-xs-6 col-sm-1"><span class="Cy">'+rowsAlt[currentSelector[0]]+'</span></div>');
+        leaderboards = (leaderboards + '<div class="col-xs-6 col-sm-5 text-muted">'+currentSelector[2]+'</div>');
+      leaderboards = (leaderboards + '</div>');
+
+      $('#leaderboards').append(leaderboards);
+    } else if (onlyOnce == 1) {
+      onlyOnce = 2;
+        leaderboards = (leaderboards + '<div class="row">');
+          leaderboards = (leaderboards + '<div class="col-xs-6 col-sm-3">'+currentSelector[1]+'</div>');
+          leaderboards = (leaderboards + '<div class="col-xs-6 col-sm-3">'+rows[0].name+'</div>');
+          leaderboards = (leaderboards + '<div class="col-xs-6 col-sm-1"><span class="Cy">'+rowsAlt[currentSelector[0]]+'</span></div>');
+          leaderboards = (leaderboards + '<div class="col-xs-6 col-sm-5 text-muted">'+currentSelector[2]+'</div>');
+        leaderboards = (leaderboards + '</div>');
+
+        $('#leaderboards').append(leaderboards);
+    } else {
+      // nope
+    }
+
+  });
 
 });
 

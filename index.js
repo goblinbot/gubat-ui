@@ -9,8 +9,8 @@ var bodyParser = require('body-parser');
 var mysql   = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
-  user     : 'gse',
-  password : '!#GSE_91nOd3!',
+  user     : 'root',
+  password : '',
   database : 'thijsboerma_maati'
 });
 
@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 var port = process.env.PORT || 5000;
 http.listen(port, function(){
-  console.log('Activity detected on pathway *:'+ port +'. Stand by for engagement.')
+  console.log('Activity detected on pathway *:'+ port +'. Stand by for engagement.');
 });
 
 
@@ -44,7 +44,6 @@ io.on('connection', function (socket) {
   console.log('User has entered the network. '+countClients+' active clients.');
 
   socket.on('initCorpBulletin', function(msg){
-    connection.query('SELECT `id`,`title`,`content`,`icon`,`priority` FROM bulletin ORDER BY `id` ASC', function(err, rows, fields) {
     connection.query('SELECT `id`,`title`,`content`,`icon`,`priority` FROM bulletin ORDER BY `id` DESC', function(err, rows, fields) {
       if (!err) {
         socket.emit('loadCorpBulletin', rows);
@@ -161,6 +160,29 @@ io.on('connection', function (socket) {
   });
   socket.on('forceRemoteAction', function(selector) {
     io.emit('forceRemoteAction', selector);
+  });
+
+  //
+  // connection.query("SELECT d.department_id, d.department_name, e.manager_id,
+  //  e.first_name FROM departments d INNER JOIN employees e ON
+  //  (d.manager_id = e.employee_id);", function(err, rows)
+  // {
+  //   if (err) throw err;
+  //
+  //   console.log(rows);
+  // });
+
+  socket.on('getTopScore', function(selector){
+    // connection.query('SELECT `a.agent_id`,`a.name`,`s.'+selector+'` FROM agents a JOIN stats s ON (s.agent_id = a.agent_id) LEFT JOIN stats m ON m.agent_id = a.agent_id WHERE s.agent_id = a.agent_id ORDER BY s.'+selector+' DESC LIMIT 1 ', function(err, rows) {
+    connection.query('SELECT agents.agent_id, agents.name, stats.'+selector+' FROM stats LEFT JOIN agents ON agents.agent_id = stats.agent_id WHERE agents.agent_id = stats.agent_id ORDER BY stats.'+selector+' DESC  LIMIT 1', function(err, rows) {
+
+      if (!err) {
+        socket.emit('setTopScore', rows);
+        console.log(rows);
+      } else {
+        console.log('Error while loading scoreboard:leaderboards.. '+ err);
+      }
+    });
   });
 
   socket.on('disconnect', function(){

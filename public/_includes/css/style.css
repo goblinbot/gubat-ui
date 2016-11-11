@@ -186,6 +186,11 @@ select, option, option .glyphicon {
   -moz-animation      : BorderDash  0.3s linear;
   -animation          : BorderDash  0.3s linear;
 }
+@media(max-width:769px){
+  .container_outside {
+    padding: 0;
+  }
+}
 
 p.console, .console {
   font-family : 'Inconsolata', consolas, sans-serif;
@@ -486,7 +491,7 @@ video#bgvid {
   transition  : 0.4s;
 }
   .mapSmall {
-    margin-top: 20px;
+    margin: 20px 0 0 0;
   }
 
 img.drone {
@@ -503,6 +508,12 @@ img.drone {
     border: 1px solid #222;
   }
 
+@media(max-width:768px){
+  img.drone{
+    width: 44px;
+    height: 44px;
+  }
+}
 
 /* BTN's custom */
   .btn-gubat, .btn-gubat .glyphicon {
