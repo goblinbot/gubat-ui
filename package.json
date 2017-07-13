@@ -2,6 +2,9 @@
   "name": "gubat-ui",
   "version": "2.0.12",
   "description": "gubat-ui in nodeJS",
+  "engines": {
+    "node": "6.11.1"
+  },
   "main": "index.js",
   "scripts": {
     "test": "sterilize"
