@@ -1,2 +1,2 @@
 # gubat-ui
-Himawari 0451: bijna volledige repository van het gubat project
+An attempt to rebuild http://www.gubat.nl/OLD/ in NodeJS while I was still inexperienced. Runs nicely, but requires MySQL.
